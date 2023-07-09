@@ -1,0 +1,26 @@
+.header{
+    padding-top: 15px;
+    padding-right: 12px;
+    padding-bottom: 15px;
+    padding-left: 12px;
+}
+.header-df{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.header-ds{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.title{
+    color: #313131;
+     font-size: 24px;
+
+    font-weight: 600;
+    line-height: 28px;}
+

@@ -1,0 +1,175 @@
+
+$gutter: 1rem; //for primeflex grid system
+@import "assets/layout/styles/layout/layout.scss";
+@import "../node_modules/@nebular/theme/styles/prebuilt/default.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeflex/primeflex.scss";
+@import "../node_modules/primeicons/primeicons.css";
+@import "assets/demo/styles/flags/flags.css";
+@import "assets/demo/styles/badges.scss";
+@import "assets/demo/styles/code.scss";
+.p-breadcrumb ul li .p-menuitem-link:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none !important;
+}
+.p-overlaypanel .p-overlaypanel-content {
+    padding: 12px !important;
+}
+.p-breadcrumb ul li .p-menuitem-link {
+
+    text-transform: capitalize;
+}
+.p-breadcrumb .p-breadcrumb-item:last-child {
+    content: none !important;
+}
+
+.p-breadcrumb .p-breadcrumb-separator {
+    display: inline;
+    margin: 0 5px;
+}
+.p-breadcrumb ul li.p-breadcrumb-chevron {
+    margin: 0 0.5rem 0 0.5rem;
+    color: #495057;
+    font-size: 9px;
+}
+.formgrid.grid {
+    display: flex;
+    height: 44px;
+
+    .col-6 {
+        display: flex;
+
+        .field-radiobutton {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.p-breadcrumb {
+    background: #ffffff;
+    border: unset;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+}
+
+.p-calendar {
+    width: 100%;
+}
+
+
+.btn-filtre-active {
+    color: #166EEE !important;
+    border: unset !important;
+    background-color: rgba(228, 239, 255, 1) !important;
+    box-shadow: unset !important;
+}
+
+.btn-filtre {
+    color: rgba(119, 119, 119, 1) !important;
+    border: unset !important;
+    background-color: rgba(60, 60, 60, 0.04) !important;
+    box-shadow: unset !important;
+}
+.layout-menu ul a:focus {
+    background-color: #EEE8F6;
+    color: #673CB6;
+    box-shadow: unset !important;
+}
+.layout-menu ul a:hover {
+    background-color: #EEE8F6;
+    color: #673CB6;
+    box-shadow: unset !important;
+}
+.layout-menu ul a.active-route  {
+    background-color: #EEE8F6;
+    color: #673CB6;
+    font-weight: 600;
+    text-decoration: unset;
+}
+.layout-menu ul a {
+    background-color:#FFFFFF;
+    color: #777;
+    font-weight: 600;
+    text-decoration: unset;
+}
+
+.iconStyle{
+    font-size:5px;
+}
+.p-inputtext {
+
+    box-shadow: none !important;
+}
+ .p-dropdown{
+
+    box-shadow: none !important;
+}
+.p-datatable .p-datatable-thead > tr > th {
+    text-align: left;
+    padding: 9px 16px;
+    border: 1px solid #ffffff;
+    border-width: 0 0 1px 0;
+    background: #ffffff;
+    transition: box-shadow 0.2s;
+    color: #777;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+}
+
+.p-dialog .p-dialog-content:last-of-type {
+
+    padding-bottom: unset;
+}
+
+.p-dialog .p-dialog-header {
+
+    padding-bottom: 10px !important;
+}
+nb-layout-header nav {
+    display: none !important;
+}
+.nb-theme-default nb-layout-header.fixed~.layout-container {
+    padding-top: unset !important;
+    min-height: unset !important;
+}
+.nb-theme-default nb-layout .layout .layout-container .content .columns nb-layout-column {
+    padding: unset;
+}
+.nb-theme-default nb-card {
+    border-radius: 8px !important;
+    margin:auto !important;
+}
+.col-element{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: unset;
+
+}
+.nb-theme-default nb-select.size-medium:not(.full-width) {
+    width: 100%;
+    height: 35px;
+}
+.libelle{
+color: #777;
+font-size: 12px;
+font-weight: 600;
+line-height: 16px;
+}
+.pi {
+    font-family: 'primeicons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal !important;
+    font-feature-settings: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1 !important;
+    display: inline-block;}
+.layout-main-container {
+
+    background-color: #E4F2FD;
+}

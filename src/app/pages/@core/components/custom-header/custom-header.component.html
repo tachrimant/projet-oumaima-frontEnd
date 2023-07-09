@@ -1,0 +1,57 @@
+<div class="header">
+    <div class="header-df">
+        <div class="title">
+            <span>{{currentPage}}</span>
+        </div>
+        <div class="btns">
+
+
+            <button *ngIf="isBtnAdd" pButton pRipple [label]="btnAdd" class="p-button-primary"
+                    style="    box-shadow: unset;margin-right:10px" (click)="addBtnSave()" ></button>
+
+            <button
+                (click)="op.toggle($event)"
+                pButton pRipple class="p-button-success" icon="pi pi-ellipsis-v" style="
+              color: rgba(119, 119, 119, 1);
+    height: 34.6px;
+    border: unset;
+    background-color: rgba(60, 60, 60, 0.04);    box-shadow: unset;">
+
+            </button>
+            <!--             <p-button icon="pi pi-ellipsis-v"></p-button>-->
+        </div>
+    </div>
+    <div class="header-ds">
+
+
+        <button pButton
+                [ngClass]="{'btn-filtre-active': isFiltre, 'btn-filtre': !isFiltre}"
+                iconPos="right"
+                [icon]="isFiltre ? 'pi pi-angle-up' : 'pi pi-angle-down'"
+                label="Filtres"
+                (click)="showFiltre()">
+        </button>
+    </div>
+    <hr style="     border-top: 2px solid #4a4848;
+    margin-top: 5px;    margin-bottom: unset;">
+</div>
+<p-overlayPanel #op [showCloseIcon]="false" appendTo="body" [baseZIndex]="90000">
+    <div style="    display: flex;
+    flex-direction: column;">
+        <button pButton pRipple label="Exporter pdf" class="p-button-primary" icon="pi pi-file-pdf" iconPos="left"
+                style="    box-shadow: unset;
+    margin-bottom: 10px;
+    background-color: #f51e1e;
+    border-color: #f51e1e;"></button>
+        <button pButton pRipple label="Exporter excel" class="p-button-primary" icon="pi pi-file-excel" iconPos="left"
+                style="    box-shadow: unset;
+    margin-bottom: 10px;
+    background-color: #2cf51e;
+    border-color: #2cf51e;"></button>
+        <button pButton pRipple label="Importer excel" class="p-button-primary" icon="pi pi-file-import" iconPos="left"
+                style="    box-shadow: unset;
+
+    background-color: #63ff58;
+    border-color: #63ff58;"></button>
+    </div>
+</p-overlayPanel>

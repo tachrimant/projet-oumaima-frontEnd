@@ -1,0 +1,53 @@
+<!-- <div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <h5>Advanced</h5>
+            <p-fileUpload
+                name="demo[]"
+                url="./upload.php"
+                (onUpload)="onUpload($event)"
+                [multiple]="true"
+                accept="image/*"
+                [maxFileSize]="1000000"
+            >
+                <ng-template pTemplate="content">
+                    <ul *ngIf="uploadedFiles.length">
+                        <li *ngFor="let file of uploadedFiles">
+                            {{ file.name }} - {{ file.size }} bytes
+                        </li>
+                    </ul>
+                </ng-template>
+            </p-fileUpload>
+
+            <h5>Basic</h5>
+            <p-fileUpload
+                mode="basic"
+                name="demo[]"
+                url="./upload.php"
+                accept="image/*"
+                [maxFileSize]="1000000"
+                (onUpload)="onBasicUpload()"
+            ></p-fileUpload>
+        </div>
+    </div>
+</div> -->
+ 
+
+<p-fileUpload
+    mode="advanced"
+    name="demo[]"
+    [showUploadButton]="false"
+     [multiple]="true"
+    [cancelLabel]="' '"
+    [chooseLabel]="' '"
+ 
+    [invalidFileSizeMessageDetail]="'{0}: Invalid file size, '"
+    [previewWidth]="200"
+    accept="image/*"
+    method="post"
+    [maxFileSize]="1000000"
+    [fileLimit]="1"
+    (onSelect)="lele($event)"
+    (onUpload)="onBasicUpload($event)"
+    
+></p-fileUpload>

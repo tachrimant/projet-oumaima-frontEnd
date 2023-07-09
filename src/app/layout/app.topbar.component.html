@@ -1,0 +1,30 @@
+<div class="layout-topbar">
+<!--    <p-breadcrumb [model]="breadItems" [home]="home" (onItemClick)="test($event)" >-->
+
+<!--    </p-breadcrumb>-->
+
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+        <i class="pi pi-bars"></i>
+    </button>
+
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+     <div  style="       background: #E3F0F8;
+    padding: 8px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}">
+
+         <i class="pi pi-user"   style="color:#024565;    padding-right: 20px;"></i>
+         <i class="pi pi-cog" (click)="menu.toggle($event)" style="color:#84cced"></i>
+     </div>
+
+    </div>
+</div>
+<p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
