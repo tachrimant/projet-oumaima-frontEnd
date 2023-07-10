@@ -20,6 +20,7 @@ import {NbThemeModule, NbLayoutModule, NbDialogModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {config} from "rxjs";
 import {BrowserModule} from "@angular/platform-browser";
+import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 
 
 export function initializeApp(appInitService: AppInitService) {
@@ -35,14 +36,12 @@ export function initializeApp(appInitService: AppInitService) {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-
         AppRoutingModule,
         HttpClientModule,
         AppLayoutModule,
         BrowserAnimationsModule,
         NbThemeModule.forRoot(),
-
-
+        ReactiveFormsModule,
         NbLayoutModule,
         NbEvaIconsModule
     ],

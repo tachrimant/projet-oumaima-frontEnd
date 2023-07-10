@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-projet',
@@ -8,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class ProjetComponent implements OnInit {
 isAdd:boolean=false
     projets;
+    tacheFrom: FormGroup;
+    constructor(private fb : FormBuilder) {
 
-    constructor() { }
+    }
 
     ngOnInit(): void {
         this.projets=[
@@ -31,6 +34,20 @@ isAdd:boolean=false
 
         ]
     }
+
+    initForm(){
+
+        this.tacheFrom = this.fb.group(
+            {
+                dateDebut : [null, Validators.required],
+                dateFin : [null, Validators.required],
+                libelle : [null, Validators.required],
+                employe : [null, Validators.required],
+                projet : [null, Validators.required]
+            }
+        )
+    }
+
     addElement(){
         this.isAdd=!this.isAdd;
     }
