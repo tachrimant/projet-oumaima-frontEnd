@@ -11,62 +11,24 @@ const BACKEND_URL = environment.apiUrl ;
     styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-    items: MenuItem[];
-    user: any;
-
-    constructor(
-        private appStore: AppStore,
-        ){
-
-        }
+    projects;
+    constructor() { }
 
     ngOnInit(): void {
-        this.items = [
-            {
-            label: 'Gestion des personnels',
-            items: [
-                {
-                    label: 'Etudiants',
-                    icon:'pi pi-fw pi-plus',
-                },
-                {
-                    label: 'Professeurs',
-                    icon:'pi pi-fw pi-trash'
-                },
-                {
-                    label: 'Salaries',
-                    icon:'pi pi-fw pi-external-link'
-                }
-            ]
-            },
-            {
-            label: 'Gestion des paiements',
-            items: [
-                {
-                    label: 'Factures',
-                    icon:'pi pi-fw pi-align-left'
-                },
-            ]
-            },
-            {
-            label: 'Gestion des Cours',
-            items: [
-                {
-                    label: 'Niveaux scolaires',
-                    icon:'pi pi-fw pi-user-plus',
-
-                },
-                {
-                    label: 'Matières',
-                    icon:'pi pi-fw pi-user-minus',
-                },
-            ]
-            },
+        this.projects=[
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
         ]
-        this.appStore.getUser().subscribe(user => {
-            console.log(user);
-        })
     }
 
 }

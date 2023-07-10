@@ -1,32 +1,102 @@
 
 <div style="    padding-top: 25px;">
-    <div style="       background: white;
+    <div style="
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;">
+        <div style="    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    padding-left: 40px;
-    padding-right: 40px;padding-top: 10px;">
-        <span style="    font-size: 19px;
-    font-weight: 600;">Liste des tâches</span>
-        <input type="text" pInputText  style="width:50%"/>
+">
+        <span
+            style="
+            font-size: 19px;
+            font-weight: 600;
+              width: 20%;">Liste des tâches
+        </span>
+            <span class="p-input-icon-left" style="    width: 50%;">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText/></span>
+            <button pButton pRipple [label]="!this.isAdd?'Ajouter':'Annuler'" class="p-button-primary"
+
+                    style="box-shadow: unset;margin-right:10px; background: #166EEE;    margin-left: 90px;
+                color: #ffffff;
+                border-color: #166EEE;" (click)="addElement()">
+
+            </button>
+
+
+        </div>
+        <div *ngIf="isAdd" style="    padding-top: 25px;">
+            <div style="display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: center;">
+                <input
+                    placeholder="Description"
+                    type="text"
+                    pInputText
+                    style="border: unset;width: 20%;
+    margin-right: 30px;
+    border-radius: unset;
+    border-bottom: 2px solid #673CB6;
+    background-color: #e1e1e1;"/>
+
+                <p-calendar placeholder="Date debut" [showIcon]="true"></p-calendar>
+                <p-calendar placeholder="Date fin" [showIcon]="true" class="heyhey"></p-calendar>
+                <nb-select placeholder="Select Showcase"  >
+                    <nb-option value="">Option empty</nb-option>
+                    <nb-option value="0">Option 0</nb-option>
+                    <nb-option value="1">Option 1</nb-option>
+                    <nb-option value="2">Option 2</nb-option>
+                    <nb-option value="3">Option 3</nb-option>
+                    <nb-option value="4">Option 4</nb-option>
+                </nb-select>
+                <nb-select placeholder="Select Showcase"  style="margin-left:30px">
+                    <nb-option value="">Option empty</nb-option>
+                    <nb-option value="0">Option 0</nb-option>
+                    <nb-option value="1">Option 1</nb-option>
+                    <nb-option value="2">Option 2</nb-option>
+                    <nb-option value="3">Option 3</nb-option>
+                    <nb-option value="4">Option 4</nb-option>
+                </nb-select>
+
+            </div>
+            <div></div>
+        </div>
     </div>
-    <p-table [value]="projects" [tableStyle]="{ 'min-width': '50rem' }">
+
+    <p-table [value]="projets" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
                 <th>Description</th>
                 <th>Projet</th>
-                <th>Date Debut</th>
-                <th>Date Fin</th>
+                <th>Date debut</th>
+                <th>Date fin</th>
+                <th>Employé</th>
+
+                <th>Action</th>
 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-project>
+        <ng-template pTemplate="body" let-projet>
             <tr>
-                <td>{{ project.description }}</td>
-                <td>{{ project.projet }}</td>
-                <td>{{ project.datedebut }}</td>
-                <td>{{ project.datefin }}</td>
+                <td>{{ projet.description }}</td>
+                <td>{{ projet.projet }}</td>
+                <td>{{ projet.datedebut }}</td>
+                <td>{{ projet.datefin }}</td>
+                <td>{{ projet.datefin }}</td>
+                <td>
+                    <!--                    <i class="pi pi-trash" ></i>-->
+                    <nb-icon icon="trash" style="color:red"></nb-icon>
+                </td>
             </tr>
         </ng-template>
     </p-table>
