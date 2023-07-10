@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor() { }
+    projects;
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        this.projects=[
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
+        ]
+    }
 
 }

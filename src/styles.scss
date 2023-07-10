@@ -173,3 +173,20 @@ line-height: 16px;
 
     background-color: #E4F2FD;
 }
+.new-btn{
+    background-color: #673CB6;
+    border-color: #673CB6;
+}
+.new-btn-no {
+    background-color: #86799f00;
+    border-color: #9669e8;
+    color: #673CB6;
+}.new-btn-no:hover {
+     background-color: #673CB6 !important;
+     border-color: #673CB6 !important;
+    color:white !important;
+}
+.new-btn:hover{
+    background-color: #673CB6 !important;
+    border-color: #673CB6 !important;
+}

@@ -5,11 +5,13 @@ import {EmployeeComponent} from "./employee/employee.component";
 import {ContratComponent} from "./contrat/contrat.component";
 import {DemandeComponent} from "./demande/demande.component";
 import {ProjetComponent} from "./projet/projet.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 @NgModule({
     imports: [
         RouterModule.forChild([
-            {path: 'dashboard',  data: { breadcrumb: 'dashboard' }, loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
+             {path: 'dashboard',component:DashboardComponent
+       },
             {path:'employee',component:EmployeeComponent},
             {path:'contrat',component:ContratComponent},
             {path:'projet',component:ProjetComponent},
