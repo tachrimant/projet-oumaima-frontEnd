@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-
+import {ApiJurisService} from "../../../services/api-juris.service";
+import {environment} from "../../../../../environments/environment";
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -11,82 +12,14 @@ export class EmployeeComponent implements OnInit {
     isAdd:boolean=false
     projets;
     tacheFrom: FormGroup;
-    constructor(private fb : FormBuilder) {
+    empCin: any;
+    constructor(private fb : FormBuilder, private service : ApiJurisService) {
 
     }
 
     ngOnInit(): void {
-        this.initForm()
-        this.projets=[
-
-            {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },          {cin:'wami',
-                nom:'scc',
-                prenom:'prenom',
-                email:'prenom',
-                dateNaissance:'12-06-2023',
-         },
-
-        ]
+        this.initForm();
+        this.findAll();
     }
 
     initForm(){
@@ -97,7 +30,7 @@ export class EmployeeComponent implements OnInit {
                 nom : [null, Validators.required],
                 prenom : [null, Validators.required],
                 email : [null, Validators.required],
-                dateNaissance : [null, Validators.required]
+                datenaissance : [null, Validators.required]
             }
         )
     }
@@ -106,6 +39,25 @@ export class EmployeeComponent implements OnInit {
         this.isAdd=!this.isAdd;
     }
     save(){
+        this.service.post('/employe/', this.tacheFrom.value).subscribe(
+            data => {
+                this.projets = data;
+            }
+        )
+    }
 
+    findAll(){
+        this.service.get('/employe/').subscribe(
+            data => {
+                this.projets = data;
+            }
+        )
+    }
+    findByCin(event){
+        this.service.get('/employe/cin/' + event.key).subscribe(
+            data => {
+                this.projets = data;
+            }
+        )
     }
 }

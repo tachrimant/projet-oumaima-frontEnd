@@ -2,11 +2,11 @@
 <div style="    padding-top: 25px;">
     <div  class="ele">
         <div class="ele2">
-        <span class="tit">Liste des tâches
+        <span class="tit">Liste des Employées
         </span>
             <span class="p-input-icon-left" style="width: 50%;">
     <i class="pi pi-search"></i>
-    <input type="text" pInputText/></span>
+    <input type="text" (keypress)="findByCin($event)" [(ngModel)]="empCin"   pInputText/></span>
             <button
                 pButton
                 pRipple
@@ -44,7 +44,7 @@
                     class="frt"
                     formControlName="email"/>
 
-                <p-calendar    formControlName="dateNaissance" placeholder="Date Naissance" [showIcon]="true"></p-calendar>
+                <p-calendar    formControlName="datenaissance" placeholder="Date Naissance" [showIcon]="true"></p-calendar>
 
             </div>
             <div style="    display: flex;
@@ -88,7 +88,7 @@
                 <td>{{ projet.nom }}</td>
                 <td>{{ projet.prenom }}</td>
                 <td>{{ projet.email }}</td>
-                <td>{{ projet.dateNaissance }}</td>
+                <td >{{ projet.datenaissance | date:'shortDate'}}</td>
                 <td>
                     <!--                    <i class="pi pi-trash" ></i>-->
                     <nb-icon icon="trash" style="color:red"></nb-icon>
