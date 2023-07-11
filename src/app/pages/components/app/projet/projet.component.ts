@@ -15,6 +15,7 @@ isAdd:boolean=false
     }
 
     ngOnInit(): void {
+        this.initForm()
         this.projets=[
             {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024',employe:'dscsc'},
             {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024',employe:'dscsc'},
@@ -41,7 +42,7 @@ isAdd:boolean=false
             {
                 dateDebut : [null, Validators.required],
                 dateFin : [null, Validators.required],
-                libelle : [null, Validators.required],
+                description : [null, Validators.required],
                 employe : [null, Validators.required],
                 projet : [null, Validators.required]
             }
@@ -50,5 +51,8 @@ isAdd:boolean=false
 
     addElement(){
         this.isAdd=!this.isAdd;
+    }
+    save(){
+
     }
 }

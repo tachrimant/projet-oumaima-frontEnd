@@ -14,6 +14,7 @@ import {InputTextModule} from "primeng/inputtext";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {RippleModule} from "primeng/ripple";
 import {CalendarModule} from "primeng/calendar";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     imports: [NbButtonModule,
@@ -22,7 +23,7 @@ import {CalendarModule} from "primeng/calendar";
         OverlayPanelModule,
         ButtonModule,
         NbSelectModule,
-        NbDialogModule.forChild(), TableModule, InputTextModule, NbIconModule, RippleModule, CalendarModule,
+        NbDialogModule.forChild(), TableModule, InputTextModule, NbIconModule, RippleModule, CalendarModule, ReactiveFormsModule,
 
     ],
     declarations: [
