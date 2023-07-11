@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ApiJurisService} from "../../../services/api-juris.service";
 import {environment} from "../../../../../environments/environment";
+import {ConfirmationService, ConfirmEventType, MessageService} from "primeng/api";
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  styleUrls: ['./employee.component.scss'],
+    providers: [ConfirmationService, MessageService]
 })
 export class EmployeeComponent implements OnInit {
 
@@ -13,7 +15,7 @@ export class EmployeeComponent implements OnInit {
     projets;
     tacheFrom: FormGroup;
     empCin: any;
-    constructor(private fb : FormBuilder, private service : ApiJurisService) {
+    constructor(private confirmationService: ConfirmationService,private fb : FormBuilder, private service : ApiJurisService, private messageService: MessageService) {
 
     }
 
@@ -60,4 +62,23 @@ export class EmployeeComponent implements OnInit {
             }
         )
     }
+
+    openDelete() {
+            this.confirmationService.confirm({
+                message: 'Voulez vous vraiment supprimer cet employé',
+                icon: 'pi pi-exclamation-triangle',
+                accept: () => {
+                    this.messageService.add({ severity: 'info', summary: 'Confirmer', detail: 'Employé supprimer' });
+                },
+                reject: (type: ConfirmEventType) => {
+                    switch (type) {
+                        case ConfirmEventType.REJECT:
+                            this.messageService.add({ severity: 'error', summary: 'Anuller', detail: 'suppression annuler' });
+                            break;
+
+                    }
+                }
+            });
+        }
+
 }

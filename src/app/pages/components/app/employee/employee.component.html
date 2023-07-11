@@ -91,10 +91,20 @@
                 <td >{{ projet.datenaissance | date:'shortDate'}}</td>
                 <td>
                     <!--                    <i class="pi pi-trash" ></i>-->
-                    <nb-icon icon="trash" style="color:red"></nb-icon>
+                    <nb-icon (click)="openDelete()" icon="trash" style="color:red"></nb-icon>
                 </td>
             </tr>
         </ng-template>
     </p-table>
 
 </div>
+<p-toast></p-toast>
+<p-confirmDialog #cd [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <h3>Supprimer employé</h3>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button type="button" pButton icon="pi pi-times" label="Non" (click)="cd.reject()" ></button>
+        <button type="button" pButton icon="pi pi-check" label="Oui"  (click)="cd.accept()"></button>
+    </ng-template>
+</p-confirmDialog>
