@@ -6,7 +6,7 @@
         </span>
             <span class="p-input-icon-left" style="width: 50%;">
     <i class="pi pi-search"></i>
-    <input type="text" (keypress)="findByCin($event)" [(ngModel)]="empCin"   pInputText/></span>
+    <input type="text" (keyup)="findByCin(empCin)" [(ngModel)]="empCin"   pInputText/></span>
             <button
                 pButton
                 pRipple

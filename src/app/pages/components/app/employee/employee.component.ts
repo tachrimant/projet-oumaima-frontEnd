@@ -53,8 +53,8 @@ export class EmployeeComponent implements OnInit {
             }
         )
     }
-    findByCin(event){
-        this.service.get('/employe/cin/' + event.key).subscribe(
+    findByCin(value){
+        this.service.get('/employe/cin/' + value).subscribe(
             data => {
                 this.projets = data;
             }
