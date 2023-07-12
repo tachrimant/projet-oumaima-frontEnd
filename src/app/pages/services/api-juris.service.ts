@@ -22,4 +22,10 @@ export class ApiJurisService {
         return this.http.post<any>(backend_url+api,body);
     }
 
+    public delete(api:string,value:any):Observable<any>{
+        const  accessToken = localStorage.getItem('access_token');
+        const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+        return this.http.delete<any>(backend_url+api + value);
+    }
+
 }

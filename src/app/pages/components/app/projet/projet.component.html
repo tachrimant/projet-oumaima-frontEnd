@@ -24,25 +24,17 @@
                     type="text"
                     pInputText
                     class="frt"
-                 formControlName="description"/>
+                 formControlName="libelle"/>
 
                 <p-calendar    formControlName="dateDebut" placeholder="Date debut" [showIcon]="true"></p-calendar>
                 <p-calendar formControlName="dateFin" placeholder="Date fin" [showIcon]="true" class="heyhey"></p-calendar>
-                <nb-select placeholder="Select type"  formControlName="employe">
-                    <nb-option value="">Option empty</nb-option>
-                    <nb-option value="0">Option 0</nb-option>
-                    <nb-option value="1">Option 1</nb-option>
-                    <nb-option value="2">Option 2</nb-option>
-                    <nb-option value="3">Option 3</nb-option>
-                    <nb-option value="4">Option 4</nb-option>
+                <nb-select placeholder="Select projet"  formControlName="projet">
+                    <nb-option *ngFor="let projet of projets" [value]="projet">{{projet.libelle}}</nb-option>
+
                 </nb-select>
-                <nb-select placeholder="Select employe" formControlName="projet"  style="margin-left:30px">
-                    <nb-option value="">Option empty</nb-option>
-                    <nb-option value="0">Option 0</nb-option>
-                    <nb-option value="1">Option 1</nb-option>
-                    <nb-option value="2">Option 2</nb-option>
-                    <nb-option value="3">Option 3</nb-option>
-                    <nb-option value="4">Option 4</nb-option>
+                <nb-select placeholder="Select employe" formControlName="employe"  style="margin-left:30px">
+                    <nb-option *ngFor="let employe of employes" [value]="employe">{{employe.nom + " " + employe.prenom}}</nb-option>
+
                 </nb-select>
 
             </div>
@@ -68,7 +60,7 @@
         </div>
     </div>
 
-    <p-table [value]="projets" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [value]="taches" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
                 <th>Description</th>
@@ -81,19 +73,30 @@
 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-projet>
+        <ng-template pTemplate="body" let-tache>
             <tr>
-                <td>{{ projet.description }}</td>
-                <td>{{ projet.projet }}</td>
-                <td>{{ projet.datedebut }}</td>
-                <td>{{ projet.datefin }}</td>
-                <td>{{ projet.datefin }}</td>
+                <td>{{ tache.libelle }}</td>
+                <td>{{ tache.projet.libelle }}</td>
+                <td>{{ tache.dateDebut | date:'shortDate'}}</td>
+                <td>{{ tache.dateFin | date:'shortDate' }}</td>
+                <td>{{ tache.employe.nom + " " + tache.employe.prenom }}</td>
                 <td>
                     <!--                    <i class="pi pi-trash" ></i>-->
-                    <nb-icon icon="trash" style="color:red"></nb-icon>
+                    <nb-icon icon="trash" (click)="openDelete(tache.id)" style="color:red"></nb-icon>
                 </td>
             </tr>
         </ng-template>
     </p-table>
 
 </div>
+
+<p-toast></p-toast>
+<p-confirmDialog #cd [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <h3>Supprimer tâche</h3>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button type="button" pButton icon="pi pi-times" label="Non" (click)="cd.reject()" ></button>
+        <button type="button" pButton icon="pi pi-check" label="Oui"  (click)="cd.accept()"></button>
+    </ng-template>
+</p-confirmDialog>

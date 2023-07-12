@@ -91,7 +91,7 @@
                 <td >{{ projet.datenaissance | date:'shortDate'}}</td>
                 <td>
                     <!--                    <i class="pi pi-trash" ></i>-->
-                    <nb-icon (click)="openDelete()" icon="trash" style="color:red"></nb-icon>
+                    <nb-icon (click)="openDelete(projet.id)" icon="trash" style="color:red"></nb-icon>
                 </td>
             </tr>
         </ng-template>

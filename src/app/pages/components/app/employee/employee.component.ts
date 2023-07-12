@@ -44,6 +44,9 @@ export class EmployeeComponent implements OnInit {
         this.service.post('/employe/', this.tacheFrom.value).subscribe(
             data => {
                 this.projets = data;
+                this.messageService.add({ severity: 'success', summary: 'Ajouter', detail: 'Employé ajouter avec succée' });
+                this.initForm();
+
             }
         )
     }
@@ -62,13 +65,21 @@ export class EmployeeComponent implements OnInit {
             }
         )
     }
+    deleteById(id){
+        this.service.delete('/employe/' ,id).subscribe(
+            data => {
+                this.projets = data;
+                this.messageService.add({ severity: 'info', summary: 'Confirmer', detail: 'Employé supprimer' });
+            }
+        )
+    }
 
-    openDelete() {
+    openDelete(id: number) {
             this.confirmationService.confirm({
                 message: 'Voulez vous vraiment supprimer cet employé',
                 icon: 'pi pi-exclamation-triangle',
                 accept: () => {
-                    this.messageService.add({ severity: 'info', summary: 'Confirmer', detail: 'Employé supprimer' });
+                    this.deleteById(id);
                 },
                 reject: (type: ConfirmEventType) => {
                     switch (type) {
