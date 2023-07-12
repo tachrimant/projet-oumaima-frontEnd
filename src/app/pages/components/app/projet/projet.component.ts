@@ -11,6 +11,7 @@ import {ConfirmationService, ConfirmEventType, MessageService} from "primeng/api
 
 })
 export class ProjetComponent implements OnInit {
+    isUpdate:boolean=false
 isAdd:boolean=false
     tacheFrom: FormGroup;
     constructor(private confirmationService: ConfirmationService,private fb : FormBuilder, private service : ApiJurisService, private messageService: MessageService) {
@@ -39,6 +40,7 @@ isAdd:boolean=false
     findAllProjets(){
         this.service.get('/projet/').subscribe(
             data => {
+
                 this.projets = data;
             }
         )
@@ -67,6 +69,8 @@ isAdd:boolean=false
     }
 
     addElement(){
+        this.isUpdate=false
+        this.initForm()
         this.isAdd=!this.isAdd;
     }
 
@@ -107,4 +111,19 @@ isAdd:boolean=false
             }
         });
     }
+
+    updateElement(tache) {
+        this.isAdd=true
+        this.isUpdate=true
+        const selectedProjet = this.projets.find(projet => projet.id === tache.projet.id);
+        const selectedemploye = this.employes.find(employe => employe.id === tache.employe.id);
+        this.tacheFrom.patchValue({
+
+            dateDebut : new Date(tache.dateDebut),
+            dateFin : new Date(tache.dateFin),
+            libelle : tache.libelle,
+            employe : selectedemploye,
+            projet :selectedProjet,
+        })
+     }
 }

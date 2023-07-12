@@ -46,7 +46,7 @@
                 <button
                     pButton
                     pRipple
-                    [label]="'Save'"
+                    [label]="isUpdate?'Update':'Save'"
                     class="p-button-primary"
                     style="    background-color: #673CB6;
     border: 2px solid #673CB6;"
@@ -82,7 +82,8 @@
                 <td>{{ tache.employe.nom + " " + tache.employe.prenom }}</td>
                 <td>
                     <!--                    <i class="pi pi-trash" ></i>-->
-                    <nb-icon icon="trash" (click)="openDelete(tache.id)" style="color:red"></nb-icon>
+                    <nb-icon icon="trash" (click)="openDelete(tache.id)" style="color:red;margin-right:10px" ></nb-icon>
+                    <nb-icon (click)="updateElement(tache)" icon="refresh-outline" style="color:#0aff00"></nb-icon>
                 </td>
             </tr>
         </ng-template>

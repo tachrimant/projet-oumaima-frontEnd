@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ApiJurisService} from "../../../services/api-juris.service";
-import {environment} from "../../../../../environments/environment";
 import {ConfirmationService, ConfirmEventType, MessageService} from "primeng/api";
+
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -12,6 +12,7 @@ import {ConfirmationService, ConfirmEventType, MessageService} from "primeng/api
 export class EmployeeComponent implements OnInit {
 
     isAdd:boolean=false
+    isUpdate:boolean=false
     projets;
     tacheFrom: FormGroup;
     empCin: any;
@@ -38,6 +39,8 @@ export class EmployeeComponent implements OnInit {
     }
 
     addElement(){
+        this.isUpdate=false
+        this.initForm()
         this.isAdd=!this.isAdd;
     }
     save(){
@@ -84,12 +87,27 @@ export class EmployeeComponent implements OnInit {
                 reject: (type: ConfirmEventType) => {
                     switch (type) {
                         case ConfirmEventType.REJECT:
-                            this.messageService.add({ severity: 'error', summary: 'Anuller', detail: 'suppression annuler' });
+                            this.messageService.add({
+                                severity: 'error',
+                                summary: 'Anuller',
+                                detail: 'suppression annuler'
+                            });
                             break;
 
                     }
                 }
             });
-        }
+    }
 
+    updateElement(projet) {
+        this.isAdd=true
+        this.isUpdate=true
+        this.tacheFrom.patchValue({
+            cin: projet.cin,
+            nom: projet.nom,
+            prenom: projet.prenom,
+            email: projet.email,
+            datenaissance: new Date(projet.datenaissance)
+        })
+    }
 }
