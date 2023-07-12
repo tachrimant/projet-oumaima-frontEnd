@@ -14,6 +14,7 @@ export class ProjetComponent implements OnInit {
     isUpdate:boolean=false
 isAdd:boolean=false
     tacheFrom: FormGroup;
+    private saveelement = true;
     constructor(private confirmationService: ConfirmationService,private fb : FormBuilder, private service : ApiJurisService, private messageService: MessageService) {
 
     }
@@ -59,6 +60,7 @@ isAdd:boolean=false
 
         this.tacheFrom = this.fb.group(
             {
+                id : [null],
                 dateDebut : [null, Validators.required],
                 dateFin : [null, Validators.required],
                 libelle : [null, Validators.required],
@@ -70,19 +72,35 @@ isAdd:boolean=false
 
     addElement(){
         this.isUpdate=false
+        this.saveelement = true;
         this.initForm()
         this.isAdd=!this.isAdd;
     }
 
     save(){
-        this.service.post('/tache/', this.tacheFrom.value).subscribe(
-            data => {
-                this.taches = data;
-                this.messageService.add({ severity: 'success', summary: 'Ajouter', detail: 'Projet ajouter avec succée' });
-                this.initForm();
+        if (this.saveelement){
+            this.service.post('/tache/', this.tacheFrom.value).subscribe(
+                data => {
+                    this.taches = data;
+                    this.messageService.add({ severity: 'success', summary: 'Ajouter', detail: 'Projet ajouter avec succée' });
+                    this.initForm();
 
-            }
-        )
+                }
+            )
+        }
+     else {
+            this.service.put('/tache/', this.tacheFrom.value).subscribe(
+                data => {
+                    this.taches = data;
+                    this.saveelement = true;
+                    this.isAdd = false;
+                    this.messageService.add({ severity: 'success', summary: 'Ajouter', detail: 'Projet ajouter avec succée' });
+                    this.initForm();
+
+                }
+            )
+        }
+
     }
 
     deleteById(id){
@@ -115,10 +133,11 @@ isAdd:boolean=false
     updateElement(tache) {
         this.isAdd=true
         this.isUpdate=true
+        this.saveelement = false;
         const selectedProjet = this.projets.find(projet => projet.id === tache.projet.id);
         const selectedemploye = this.employes.find(employe => employe.id === tache.employe.id);
         this.tacheFrom.patchValue({
-
+            id : tache.id,
             dateDebut : new Date(tache.dateDebut),
             dateFin : new Date(tache.dateFin),
             libelle : tache.libelle,

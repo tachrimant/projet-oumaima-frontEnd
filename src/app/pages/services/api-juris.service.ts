@@ -22,6 +22,12 @@ export class ApiJurisService {
         return this.http.post<any>(backend_url+api,body);
     }
 
+    public put(api:string,body:any):Observable<any>{
+        const  accessToken = localStorage.getItem('access_token');
+        const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+        return this.http.put<any>(backend_url+api,body);
+    }
+
     public delete(api:string,value:any):Observable<any>{
         const  accessToken = localStorage.getItem('access_token');
         const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);

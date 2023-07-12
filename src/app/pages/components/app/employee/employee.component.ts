@@ -16,6 +16,7 @@ export class EmployeeComponent implements OnInit {
     projets;
     tacheFrom: FormGroup;
     empCin: any;
+    saveelemnt = true;
     constructor(private confirmationService: ConfirmationService,private fb : FormBuilder, private service : ApiJurisService, private messageService: MessageService) {
 
     }
@@ -29,6 +30,7 @@ export class EmployeeComponent implements OnInit {
 
         this.tacheFrom = this.fb.group(
             {
+                id : [null],
                 cin : [null, Validators.required],
                 nom : [null, Validators.required],
                 prenom : [null, Validators.required],
@@ -43,15 +45,31 @@ export class EmployeeComponent implements OnInit {
         this.initForm()
         this.isAdd=!this.isAdd;
     }
-    save(){
-        this.service.post('/employe/', this.tacheFrom.value).subscribe(
-            data => {
-                this.projets = data;
-                this.messageService.add({ severity: 'success', summary: 'Ajouter', detail: 'Employé ajouter avec succée' });
-                this.initForm();
 
-            }
-        )
+    save(){
+        if (this.saveelemnt){
+            console.log('save')
+
+            this.service.post('/employe/', this.tacheFrom.value).subscribe(
+                data => {
+                    this.projets = data;
+                    this.messageService.add({ severity: 'success', summary: 'Ajouter', detail: 'Employé ajouter avec succée' });
+                    this.initForm();
+
+                }
+            )
+        }
+        else{
+            console.log('update')
+            this.service.put('/employe/', this.tacheFrom.value).subscribe(
+                data => {
+                    this.projets = data;
+                    this.messageService.add({ severity: 'success', summary: 'Mis à jour', detail: 'Employé mis à jour avec succée' });
+                    this.initForm();
+                    this.isAdd = false;
+                }
+            )
+        }
     }
 
     findAll(){
@@ -101,8 +119,10 @@ export class EmployeeComponent implements OnInit {
 
     updateElement(projet) {
         this.isAdd=true
+        this.saveelemnt = false;
         this.isUpdate=true
         this.tacheFrom.patchValue({
+            id : projet.id,
             cin: projet.cin,
             nom: projet.nom,
             prenom: projet.prenom,
