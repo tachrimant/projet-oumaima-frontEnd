@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AppStore } from 'src/app/pages/services/app-store.service';
 import { environment } from 'src/environments/environment';
+import {ApiJurisService} from "../../../services/api-juris.service";
 
 const BACKEND_URL = environment.apiUrl ;
 
@@ -13,13 +14,33 @@ const BACKEND_URL = environment.apiUrl ;
 export class DashboardComponent implements OnInit {
     projects;
     currentUser:any;
-    constructor(private appStore:AppStore) { }
+    employes = [];
+    projets = [];
+    constructor(private appStore:AppStore, private service : ApiJurisService) { }
 
     ngOnInit(): void {
-this.appStore.getUser().subscribe((user)=>{
+        this.appStore.getUser().subscribe((user)=>{
+             this.currentUser=  user
+        })
+        this.findAllEmploye()
+        this.findAllProjets()
+    }
 
-    this.currentUser=  user
-})
+
+    findAllEmploye(){
+        this.service.get('/employe/').subscribe(
+            data => {
+                this.employes = data;
+            }
+        )
+    }
+    findAllProjets(){
+        this.service.get('/projet/').subscribe(
+            data => {
+
+                this.projets = data;
+            }
+        )
     }
 
 }

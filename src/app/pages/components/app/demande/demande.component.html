@@ -24,19 +24,20 @@
         <span class="dsds">{{demande}}</span>
             <span class="p-input-icon-left" style="  width: 50%;">
                 <i class="pi pi-search"></i>
-                   <input type="text" pInputText   />
+                   <input type="text" pInputText  (keyup)="findByLibelle(libelleLike)" [(ngModel)]="libelleLike" />
 </span>
 
             <button
                 (click)="showAdd()"
                 [label]="isAdd?'Annuler':'Ajouter'"
+                [icon]="isAdd?'pi pi-times':'pi pi-plus'" iconPos="left"
                 class="p-button-primary olol"
                 pButton
                 pRipple ></button>
         </div>
 
-        <div    class="lopm">
-            <div [formGroup]="demandeCongeFrom" *ngIf="demande==='Demande congé' && isAdd" style="display: flex;
+        <div  *ngIf="demande==='Demande congé' && isAdd"   class="lopm">
+            <div [formGroup]="demandeCongeFrom" style="display: flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: nowrap;
@@ -81,7 +82,7 @@
 
 
 
-                <nb-select placeholder="Select employe" formControlName="employe" >
+                <nb-select placeholder="Select employe" formControlName="employee" >
                     <nb-option *ngFor="let employe of employes" [value]="employe">{{employe.nom +" " +employe.prenom}}</nb-option>
                 </nb-select>
 
@@ -132,11 +133,9 @@
                 <td>{{ demande.libelle }}</td>
                 <td>{{ demande.code }}</td>
                 <td>{{ demande.etat }}</td>
-
-
                 <td >{{ demande.dateDebut | date:'shortDate'}}</td>
                 <td >{{ demande.dateFin | date:'shortDate'}}</td>
-                <td>{{ !demande.employe?'----':demande.employe.nom + demande.employe.prenom }}</td>
+                <td>{{ demande.employee.nom + " " + demande.employee.prenom }}</td>
                 <td>{{ demande.jourCouvrable }}</td>
                 <td>
                      <nb-icon icon="trash" style="color:red"></nb-icon>
