@@ -12,23 +12,14 @@ const BACKEND_URL = environment.apiUrl ;
 })
 export class DashboardComponent implements OnInit {
     projects;
-    constructor() { }
+    currentUser:any;
+    constructor(private appStore:AppStore) { }
 
     ngOnInit(): void {
-        this.projects=[
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-            {description:'wami',projet:'scc',datedebut:'12-06-2023',datefin:'19-07-2024'},
-        ]
+this.appStore.getUser().subscribe((user)=>{
+
+    this.currentUser=  user
+})
     }
 
 }

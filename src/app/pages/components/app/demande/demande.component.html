@@ -1,9 +1,5 @@
 <div style="padding-top: 25px">
-    <div style="
-    display: flex;
-    flex-direction: row;
-    align-items: center;">
-
+    <div  class="dsd">
         <button pButton pRipple [label]="btnC.label" class="p-button-primary"
                 [ngClass]="btnC.isActive?'new-btn':'new-btn-no'"
                 style="    box-shadow: unset;margin-right:10px" (click)="selectbtnC()">
@@ -19,88 +15,95 @@
                 style="    box-shadow: unset;margin-right:10px"  (click)="selectbtnFP()">
 
         </button>
-        <button pButton pRipple [label]="btnT.label" class="p-button-primary"
-                [ngClass]="btnT.isActive?'new-btn':'new-btn-no'"
-                style="    box-shadow: unset;margin-right:10px"  (click)="selectbtnT()"></button>
-
-
     </div>
-
-
 </div>
 
-<div style="    padding-top: 25px;">
+<div style="padding-top: 25px;">
     <div>
-        <div style="
-    background: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 10px;">
-        <span
-            style="
-            font-size: 19px;
-            font-weight: 600;    width: 20%;">{{demande}}
-        </span>
-            <span class="p-input-icon-left" style="    width: 50%;">
-    <i class="pi pi-search"></i>
-    <input type="text" pInputText   />
-
+        <div  class="suii">
+        <span class="dsds">{{demande}}</span>
+            <span class="p-input-icon-left" style="  width: 50%;">
+                <i class="pi pi-search"></i>
+                   <input type="text" pInputText   />
 </span>
 
-            <button pButton pRipple [label]="'Ajouter'" class="p-button-primary"
-
-                    style="box-shadow: unset;margin-right:10px; background: #166EEE;
-                color: #ffffff;
-                border-color: #166EEE;"     >
-
-            </button>
-
-
+            <button
+                (click)="showAdd()"
+                [label]="isAdd?'Annuler':'Ajouter'"
+                class="p-button-primary olol"
+                pButton
+                pRipple ></button>
         </div>
-        <div   style="      padding-top: 25px;
-    background: white;
-    padding-left: 10px;
-    padding-right: 10px;">
-            <div style="display: flex;
+
+        <div    class="lopm">
+            <div [formGroup]="demandeCongeFrom" *ngIf="demande==='Demande congé' && isAdd" style="display: flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: nowrap;
     align-items: center;">
+
                 <input
-                    placeholder="Description"
+                    placeholder="Code"
+                    formControlName="code"
                     type="text"
                     pInputText
-                    style="border: unset;width: 20%;
-    margin-right: 30px;
-    border-radius: unset;
-    border-bottom: 2px solid #673CB6;
-    background-color: #e1e1e1;"/>
+                    class="dzdzd"/>
 
-                <p-calendar placeholder="Date debut" [showIcon]="true"></p-calendar>
-                <p-calendar placeholder="Date fin" [showIcon]="true" class="heyhey"></p-calendar>
-                <nb-select placeholder="Select type"  >
-                    <nb-option value="">Option empty</nb-option>
-                    <nb-option value="0">Option 0</nb-option>
-                    <nb-option value="1">Option 1</nb-option>
-                    <nb-option value="2">Option 2</nb-option>
-                    <nb-option value="3">Option 3</nb-option>
-                    <nb-option value="4">Option 4</nb-option>
+                <input
+                    placeholder="Etat"
+                    formControlName="etat"
+                    type="text"
+                    pInputText
+                    class="dsdsdsdsd"/>
+                <input
+                    placeholder="Libelle"
+                    formControlName="libelle"
+                    type="text"
+                    pInputText
+                    class="dsdsdsdsd"/>
+                <input
+                    placeholder="Jour couvrable"
+                    formControlName="jourCouvrable"
+                    type="number"
+                    pInputText
+                    class="dzzdzdzdzdzrg"/>
+                <div  style="    margin-right: 30px;">
+                    <p-calendar
+                    formControlName="dateDebut"
+                    placeholder="Date Debut"
+                    [showIcon]="true"></p-calendar></div>
+                <div style="    margin-right: 30px;">
+                    <p-calendar
+                    formControlName="dateFin"
+                    placeholder="Date Fin"
+                    [showIcon]="true"></p-calendar></div>
+
+
+
+
+                <nb-select placeholder="Select employe" formControlName="employe" >
+                    <nb-option *ngFor="let employe of employes" [value]="employe">{{employe.nom +" " +employe.prenom}}</nb-option>
                 </nb-select>
-                <nb-select placeholder="Select employe"  style="margin-left:30px">
-                    <nb-option value="">Option empty</nb-option>
-                    <nb-option value="0">Option 0</nb-option>
-                    <nb-option value="1">Option 1</nb-option>
-                    <nb-option value="2">Option 2</nb-option>
-                    <nb-option value="3">Option 3</nb-option>
-                    <nb-option value="4">Option 4</nb-option>
-                </nb-select>
+
 
             </div>
-            <div></div>
+            <div style="    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;">
+                <button
+                    pButton
+                    pRipple
+                    [label]="isUpdate?'Update':'Save'"
+                    class="p-button-primary"
+                    style="    background-color: #673CB6;
+    border: 2px solid #673CB6;"
+                    [disabled]="demandeCongeFrom.invalid"
+                    (click)="save()">
+                </button>
+
+            </div>
         </div>
 
 
@@ -109,27 +112,34 @@
 
 
     <p-table [value]="demandes" [tableStyle]="{ 'min-width': '50rem' }">
-        <ng-template pTemplate="header">
+        <ng-template pTemplate="header" *ngIf="demande==='Demande congé'">
             <tr>
+                <th>Libelle</th>
+                <th>Code</th>
+                <th>Etat</th>
                 <th>Date début</th>
                 <th>Date fin</th>
-                <th>Type</th>
-                <th>Jours ouvrables</th>
-                <th>Etat</th>
+                <th>Employe</th>
+                <th>Jour couvrable</th>
+
                 <th>Action</th>
 
             </tr>
+
         </ng-template>
-        <ng-template pTemplate="body" let-demande>
-            <tr>
-                <td>{{ demande.description }}</td>
-                <td>{{ demande.projet }}</td>
-                <td>{{ demande.datedebut }}</td>
-                <td>{{ demande.datefin }}</td>
-                <td>{{ demande.datefin }}</td>
+        <ng-template pTemplate="body" let-demande  *ngIf="demande==='Demande congé'">
+            <tr >
+                <td>{{ demande.libelle }}</td>
+                <td>{{ demande.code }}</td>
+                <td>{{ demande.etat }}</td>
+
+
+                <td >{{ demande.dateDebut | date:'shortDate'}}</td>
+                <td >{{ demande.dateFin | date:'shortDate'}}</td>
+                <td>{{ !demande.employe?'----':demande.employe.nom + demande.employe.prenom }}</td>
+                <td>{{ demande.jourCouvrable }}</td>
                 <td>
-                    <!--                    <i class="pi pi-trash" ></i>-->
-                    <nb-icon icon="trash" style="color:red"></nb-icon>
+                     <nb-icon icon="trash" style="color:red"></nb-icon>
                 </td>
             </tr>
         </ng-template>

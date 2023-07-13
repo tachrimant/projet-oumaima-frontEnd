@@ -10,12 +10,12 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 @NgModule({
     imports: [
         RouterModule.forChild([
-             {path: 'dashboard',component:DashboardComponent
-       },
+            {path: 'dashboard',component:DashboardComponent},
             {path:'employee',component:EmployeeComponent},
             {path:'contrat',component:ContratComponent},
             {path:'projet',component:ProjetComponent},
             {path:'demande',component:DemandeComponent},
+            {path: '',redirectTo:'dashboard', pathMatch: 'full'},
         ])
     ]
 })

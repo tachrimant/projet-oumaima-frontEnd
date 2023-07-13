@@ -1,51 +1,5 @@
-.global-container {
-    height: 100vh;
-    display: flex;
-    background: #FFFFFF;
-    .side-bar {
-        background: #F7F7F7;
-        .title {
-            padding: 2rem;
-            font-size: 20px;
-            font-weight: 600;
-        }
-    }
-    .side-right {
-        width: 100%;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        .header {
-            height: 60px;
-            background: #F7F7F7;
-        }
-        .body {
-            height: 100%;
-        }
-    }
-}
-
-:host ::ng-deep {
-    p-panelmenu.p-element {
-        .p-panelmenu .p-panelmenu-panel {
-            .p-panelmenu-header-link {
-                display: flex;
-                flex-direction: row-reverse;
-                justify-content: space-between;
-                border: unset;
-                background: unset;
-            }
-        }
-        .p-panelmenu .p-panelmenu-content {
-            border: unset;
-        }
-        .p-panelmenu .p-panelmenu-header > a:focus {
-            outline: unset;
-            outline-offset: unset;
-            box-shadow: unset;
-        }
-        .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link:not(.p-disabled):hover {
-            background: #F7F7F7;
-        }
-    }
-}
+.name{color: var(--neutral-n-8, #313131);
+      font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px; /* 116.667% */}
