@@ -21,6 +21,10 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {config} from "rxjs";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {RegisterComponent} from "./pages/components/auth/register/register.component";
+import {InputTextModule} from "primeng/inputtext";
+import {RippleModule} from "primeng/ripple";
+import {ButtonModule} from "primeng/button";
 
 
 export function initializeApp(appInitService: AppInitService) {
@@ -31,7 +35,7 @@ export function initializeApp(appInitService: AppInitService) {
 
 @NgModule({
     declarations: [
-        AppComponent, NotfoundComponent,
+        AppComponent, NotfoundComponent,RegisterComponent
     ],
     imports: [
         BrowserModule,
@@ -43,7 +47,10 @@ export function initializeApp(appInitService: AppInitService) {
         NbThemeModule.forRoot(),
         ReactiveFormsModule,
         NbLayoutModule,
-        NbEvaIconsModule
+        NbEvaIconsModule,
+        InputTextModule,
+        RippleModule,
+        ButtonModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
