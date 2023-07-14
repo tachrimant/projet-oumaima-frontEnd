@@ -6,7 +6,7 @@
         </span>
             <span class="p-input-icon-left" style="width: 50%;">
     <i class="pi pi-search"></i>
-    <input type="text" pInputText/></span>
+    <input type="text" placeholder="nom du projet" (keyup)="finByprojetLibelle(libelle)" [(ngModel)]="libelle" pInputText/></span>
             <button
                 pButton
                 pRipple

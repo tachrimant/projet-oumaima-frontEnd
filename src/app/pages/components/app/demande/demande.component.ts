@@ -34,6 +34,7 @@ export class DemandeComponent implements OnInit {
 
     showAdd() {
         this.isUpdate=false
+        this.saveelemnt = true;
         if (this.demande == "Demande congé") {
        this.initConge()
         }

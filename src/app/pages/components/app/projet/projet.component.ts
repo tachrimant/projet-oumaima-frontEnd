@@ -22,6 +22,7 @@ isAdd:boolean=false
     employes = [];
     projets = [];
     taches = [];
+    libelle: string;
 
     ngOnInit(): void {
         this.findAllEmploye()
@@ -145,4 +146,12 @@ isAdd:boolean=false
             projet :selectedProjet,
         })
      }
+
+    finByprojetLibelle(libelle: string) {
+        this.service.get('/tache/code/' + libelle).subscribe(
+            data => {
+                this.taches = data;
+            }
+        )
+    }
 }

@@ -1,34 +1,114 @@
 
 <div style="    padding-top: 25px;">
-    <div style="       background: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 40px;
-    padding-right: 40px;padding-top: 10px;">
-        <span style="    font-size: 19px;
-    font-weight: 600;">Liste des tâches</span>
-        <input type="text" pInputText  style="width:50%"/>
+    <div  class="ele">
+        <div class="ele2">
+          <span class="tit">Liste des Contrats
+          </span>
+            <span class="p-input-icon-left" style="width: 50%;">
+          <i class="pi pi-search"></i>
+          <input type="text" placeholder="Chercher contrat par poste" (keyup)="findByCode(code)" [(ngModel)]="code"   pInputText/></span>
+            <button
+                pButton
+                pRipple
+                [label]="!this.isAdd?'Ajouter':'Annuler'"
+                class="p-button-primary bbtn"
+                (click)="addElement()">
+            </button>
+
+        </div>
+        <div [formGroup]="contratForm" *ngIf="isAdd" style="padding-top: 25px;">
+            <div class="def">
+                <input
+                    placeholder="Code"
+                    type="text"
+                    pInputText
+                    class="frt"
+                    formControlName="code"/>
+                <input
+                    placeholder="Poste"
+                    type="text"
+                    pInputText
+                    class="frt"
+                    formControlName="libelle"/>
+                <input
+                    placeholder="type contrat"
+                    type="text"
+                    pInputText
+                    class="frt"
+                    formControlName="typeContrat"/>
+
+                <p-calendar    formControlName="dateDebut" placeholder="Date Debut" [showIcon]="true"></p-calendar>
+                <p-calendar    formControlName="dateFin" placeholder="Date Fin" [showIcon]="true" class="heyhey"></p-calendar>
+
+                <nb-select placeholder="Select employe" formControlName="employe"  style="margin-left:30px">
+                    <nb-option *ngFor="let employe of employes" [value]="employe">{{employe.nom + " " + employe.prenom}}</nb-option>
+
+                </nb-select>
+
+            </div>
+            <div style="    display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding-top: 20px;">
+                <button
+                    pButton
+                    pRipple
+                    [label]="isUpdate?'Update':'Save'"
+                    class="p-button-primary"
+                    style="    background-color: #673CB6;
+                     border: 2px solid #673CB6;"
+                    [disabled]="contratForm.invalid"
+                    (click)="save()">
+                </button>
+
+            </div>
+            <div>
+            </div>
+        </div>
     </div>
-    <p-table [value]="projects" [tableStyle]="{ 'min-width': '50rem' }">
+
+    <p-table [value]="contrats" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
-                <th>Description</th>
-                <th>Projet</th>
+                <th>Code</th>
+                <th>Poste</th>
                 <th>Date Debut</th>
                 <th>Date Fin</th>
+                <th>Type</th>
+                <th>Employé</th>
+                <th>Action</th>
 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-project>
+        <ng-template pTemplate="body" let-contrat>
             <tr>
-                <td>{{ project.description }}</td>
-                <td>{{ project.projet }}</td>
-                <td>{{ project.datedebut }}</td>
-                <td>{{ project.datefin }}</td>
+                <td>{{ contrat.code }}</td>
+                <td>{{ contrat.libelle }}</td>
+                <td>{{ contrat.dateDebut | date:'shortDate'}}</td>
+                <td *ngIf="contrat.dateFin != null">{{ contrat.dateFin | date:'shortDate'}}</td>
+                <td *ngIf="contrat.dateFin == null">indéterminé</td>
+                <td>{{ contrat.typeContrat }}</td>
+                <td>{{ contrat.employe.nom + " " + contrat.employe.prenom }}</td>
+                <td>
+                    <nb-icon icon="trash" (click)="openDelete(contrat.id)" style="color:red;margin-right:10px" ></nb-icon>
+                    <nb-icon (click)="updateElement(contrat)" icon="refresh-outline" style="color:#0aff00"></nb-icon>
+                </td>
             </tr>
         </ng-template>
     </p-table>
 
 </div>
+
+
+
+<p-toast></p-toast>
+<p-confirmDialog #cd [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <h3>Supprimer Contrat</h3>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button type="button" pButton icon="pi pi-times" label="Non" (click)="cd.reject()" ></button>
+        <button type="button" pButton icon="pi pi-check" label="Oui"  (click)="cd.accept()"></button>
+    </ng-template>
+</p-confirmDialog>
