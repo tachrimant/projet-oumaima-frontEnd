@@ -1,5 +1,5 @@
 <div style="padding-top: 20px;">
-    <span class="name">Hello, Admin 👋</span>
+    <span class="name">Hello, {{currentUser.username}}</span>
     <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 50px">
         <div (click)="navToElement('projet')" style="cursor:pointer; width: 100%; max-width: 300px; background-color: white; border-radius: 8px; padding: 10px; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; margin: 10px;">
             <div style="background-color: #e4ffe0; padding: 10px; border-radius: 10px;">
@@ -12,28 +12,7 @@
                 {{projets.length}}
             </div>
         </div>
-        <div (click)="navToElement('contrat')" style="cursor:pointer;width: 100%; max-width: 300px; background-color: white; border-radius: 8px; padding: 10px; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; margin: 10px;">
-            <div style="background-color: #acecec; padding: 10px; border-radius: 10px;">
-                <nb-icon style="color: #009688; font-size: 40px;" icon="file-text-outline"></nb-icon>
-            </div>
-            <div style="font-size: 16px; font-weight: 600; margin-right: 20px; margin-left: 20px;">
-                Contrats
-            </div>
-            <div style="display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; flex: 1; font-size: 30px; font-weight: 600; color: #0ea93f;">
-                {{contrats.length}}
-            </div>
-        </div>
-        <div (click)="navToElement('employee')" style="cursor:pointer;width: 100%; max-width: 300px; background-color: white; border-radius: 8px; padding: 10px; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; margin: 10px;">
-            <div style="background-color: #ffffe0; padding: 10px; border-radius: 10px;">
-                <nb-icon style="color: #918400; font-size: 40px;" icon="people-outline"></nb-icon>
-            </div>
-            <div style="font-size: 16px; font-weight: 600; margin-right: 20px; margin-left: 20px;">
-                Employés
-            </div>
-            <div style="display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; flex: 1; font-size: 30px; font-weight: 600; color: #0ea93f;">
-                {{employes.length}}
-            </div>
-        </div>
+
         <div (click)="navToElement('projet')" style="cursor:pointer;width: 100%; max-width: 300px; background-color: white; border-radius: 8px; padding: 10px; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; margin: 10px;">
             <div style="background-color: #d6def1; padding: 10px; border-radius: 10px;">
                 <nb-icon style="color: #0031d4; font-size: 40px;" icon="grid-outline"></nb-icon>

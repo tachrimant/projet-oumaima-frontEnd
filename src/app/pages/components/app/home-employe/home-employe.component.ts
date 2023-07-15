@@ -27,6 +27,7 @@ export class HomeEmployeComponent implements OnInit {
 
   ngOnInit(): void {
       this.appStore.getUser().subscribe((user)=>{
+          console.log(user)
           this.currentUser=  user
       })
       this.findAllEmploye()
