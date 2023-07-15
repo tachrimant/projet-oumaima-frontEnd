@@ -8,12 +8,13 @@ import {ProjetComponent} from "./projet/projet.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {FormationComponent} from "./formation/formation.component";
 import {HomeEmployeComponent} from "./home-employe/home-employe.component";
+import {AdminGuard} from "../auth/guards/admin.guard";
 
 @NgModule({
     imports: [
         RouterModule.forChild([
             {path: 'dashboard',component:DashboardComponent},
-            {path:'employee',component:EmployeeComponent},
+            {path:'employee',component:EmployeeComponent, canActivate: [AdminGuard] },
             {path:'contrat',component:ContratComponent},
             {path:'projet',component:ProjetComponent},
             {path:'demande',component:DemandeComponent},

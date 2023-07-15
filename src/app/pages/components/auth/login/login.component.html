@@ -57,7 +57,7 @@
                             <input
                                  type="email"
                                 placeholder="Enter your email"
-                                required
+
                                  formControlName="username"
                                 id="email"
                                 name="email"
@@ -70,8 +70,7 @@
                                    formControlName="password"
                              />
                         </div>
-                        <div class="text"><a href="#">Forgot password?</a></div>
-                        <div class="button input-box">
+                         <div class="button input-box">
                             <input type="submit" value="Login" />
                         </div>
                         <div class="text sign-up-text">
@@ -82,15 +81,24 @@
             </div>
             <div class="signup-form">
                 <div class="title">Signup</div>
-                <form  >
+                <form  [formGroup]="registreForm" (ngSubmit)="save()">
                     <div class="input-boxes">
+                        <div class="input-box">
+                            <i class="fas fa-user"></i>
+                            <input
+                                 name="username"
+                                type="text"
+                                placeholder="Enter your username"
+                                 formControlName="username"
+                            />
+                        </div>
                         <div class="input-box">
                             <i class="fas fa-user"></i>
                             <input
                                  name="firstname"
                                 type="text"
                                 placeholder="Enter your First Name"
-                                required
+                                 formControlName="prenom"
                             />
                         </div>
                         <div class="input-box">
@@ -99,48 +107,49 @@
                                  name="lastname"
                                 type="text"
                                 placeholder="Enter your Last name"
-                                required
+                                 formControlName="nom"
+                            />
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-user"></i>
+                            <input
+                                 name="lastname"
+                                type="text"
+                                placeholder="Enter your cin"
+                                 formControlName="cin"
                             />
                         </div>
                         <div class="input-box">
                             <i class="fas fa-envelope"></i>
                             <input type="text"
                                     name="email"
-                                   placeholder="Enter your email" required />
+                                   placeholder="Enter your email"    formControlName="email" />
                         </div>
                         <div class="input-box">
                             <i class="fas fa-lock"></i>
                             <input
                                 type="password"
                                  name="password"
+                                formControlName="password"
                                 placeholder="Enter your password"
-                                required
+
                             />
                         </div>
                         <div class="input-box">
                             <i class="fa fa-calendar" aria-hidden="true"></i>
                             <input
-
+                                formControlName="datenaissance"
                                 name="age"
-                                type="text"
+                                type="date"
                                 placeholder="Enter your age"
-                                required
+
                             />
                         </div>
 
 
 
 
-                        <div class="input-box">
-                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                            <input
 
-                                name="grade"
-                                type="text"
-                                placeholder="Enter your grade"
-                                required
-                            />
-                        </div>
 
                         <div class="button input-box">
                             <input type="submit" value="Sumbit" />

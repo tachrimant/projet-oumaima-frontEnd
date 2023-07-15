@@ -62,10 +62,9 @@ export class MenuInitService {
         const menuItems = menu ;
         this.appStore.getUser().subscribe(
             (user) => {
-                console.log(user)
-                console.log(menuItems)
+
                 const roles = user.authorities;
-                console.log(roles);
+
                 menuItems.forEach(element => {
 
                         let intersection = element.roles.filter(x => roles.includes(x));
