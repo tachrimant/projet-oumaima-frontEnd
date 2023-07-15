@@ -17,6 +17,7 @@ import {CalendarModule} from "primeng/calendar";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ToastModule} from "primeng/toast";
+import { FormationComponent } from './formation/formation.component';
 
 @NgModule({
     imports: [NbButtonModule,
@@ -35,7 +36,8 @@ import {ToastModule} from "primeng/toast";
      ContratComponent,
      ProjetComponent,
         DashboardComponent,
-     DemandeComponent
+     DemandeComponent,
+     FormationComponent
   ],
     exports:[CustomHeaderComponent],
 

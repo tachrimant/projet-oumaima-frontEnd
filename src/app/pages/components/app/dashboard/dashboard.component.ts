@@ -4,6 +4,7 @@ import { MenuItem } from 'primeng/api';
 import { AppStore } from 'src/app/pages/services/app-store.service';
 import { environment } from 'src/environments/environment';
 import {ApiJurisService} from "../../../services/api-juris.service";
+import {Router} from "@angular/router";
 
 const BACKEND_URL = environment.apiUrl ;
 
@@ -22,7 +23,7 @@ export class DashboardComponent implements OnInit {
     demadeMission = [];
     demadeFichePaie = [];
     demande = "Demande congé"
-    constructor(private appStore:AppStore, private service : ApiJurisService) { }
+    constructor(private appStore:AppStore, private service : ApiJurisService,private router:Router) { }
 
     ngOnInit(): void {
         this.appStore.getUser().subscribe((user)=>{
@@ -92,4 +93,8 @@ export class DashboardComponent implements OnInit {
         )
     }
 
+    navToElement(value){
+        this.router.navigateByUrl('/'
+        +value)
+    }
 }

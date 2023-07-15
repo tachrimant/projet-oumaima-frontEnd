@@ -6,6 +6,7 @@ import {ContratComponent} from "./contrat/contrat.component";
 import {DemandeComponent} from "./demande/demande.component";
 import {ProjetComponent} from "./projet/projet.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {FormationComponent} from "./formation/formation.component";
 
 @NgModule({
     imports: [
@@ -15,6 +16,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
             {path:'contrat',component:ContratComponent},
             {path:'projet',component:ProjetComponent},
             {path:'demande',component:DemandeComponent},
+            {path:'formation',component:FormationComponent},
             {path: '',redirectTo:'dashboard', pathMatch: 'full'},
         ])
     ]

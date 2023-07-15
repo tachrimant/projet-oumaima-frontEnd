@@ -31,14 +31,14 @@ export class AppInitService {
                 return this.getconfig().pipe(map(user => {
                     if(user){
                         let roles = [];
-                        user.roles.map(role => {
-                            roles.push(role.name);
+                        user.authorities.map(role => {
+                            roles.push(role.authority);
                         });
                         let appUser: AppUser = {
                             id: user.id,
                             username: user.username,
                             uuid: user.uuid,
-                            roles: roles
+                            authorities: roles
                         }
                         this.appStore.setUser(appUser);
                     }
@@ -60,7 +60,7 @@ export class AppInitService {
     getconfig() {
 
         return this.http
-            .get<any>(BACKEND_URL + "/user/profile")
+            .get<any>(BACKEND_URL + "/api/users/profile")
             // .pipe(map(user => {
             //     if(user){
 

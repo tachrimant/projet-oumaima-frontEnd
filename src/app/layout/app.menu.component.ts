@@ -19,39 +19,53 @@ export class AppMenuComponent implements OnInit {
                     label: 'Acceuil',
                     icon: 'pi pi-fw pi-home',
                     routerLink: ['/dashboard'],
-                    roles: ['ALL'],
+                    roles: ['ROLE_ADMIN'],
                     visible: false
                 } ,
                 {
                     label: 'Employée',
                     icon: 'pi pi-fw pi-home',
                     routerLink: ['/employee'],
-                    roles: ['ALL'],
+                    roles: ['ROLE_ADMIN'],
                     visible: false
                 },
                 {
                     label: 'Contrat',
                     icon: 'pi pi-fw pi-home',
                     routerLink: ['/contrat'],
-                    roles: ['ALL'],
+                    roles: ['ROLE_ADMIN'],
                     visible: false
                 },
                 {
                     label: 'Projet',
                     icon: 'pi pi-fw pi-home',
                     routerLink: ['/projet'],
-                    roles: ['ALL'],
+                    roles: ['ROLE_ADMIN'],
                     visible: false
                 },
                 {
                     label: 'Demande',
                     icon: 'pi pi-fw pi-home',
                     routerLink: ['/demande'],
-                    roles: ['ALL'],
+                    roles: ['ROLE_ADMIN'],
                     visible: false
                 }
             ],
-            roles: ['ALL'],
+            roles: ['ROLE_ADMIN'],
+            visible: false
+        },
+        {
+            label: 'Employe',
+            items: [
+                {
+                    label: 'Formation',
+                    icon: 'pi pi-fw pi-home',
+                    routerLink: ['/formation'],
+                    roles: ['ROLE_USER'],
+                    visible: false
+                }
+            ],
+            roles: ['ROLE_USER'],
             visible: false
         },
 

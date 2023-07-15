@@ -34,6 +34,7 @@ export class AuthService {
             )
             .subscribe(
                 response => {
+
                      this.access_token = response['access_token'];
                     // this.refresh_token = response['refresh_token'];
                     const expires_in = response['expires_in'];
@@ -46,22 +47,28 @@ export class AuthService {
                             now.getTime() + expires_in
                         );
                         this.saveAuthData(this.access_token, this.refresh_token, expirationDate);
-                         this.router.navigate(["/dashboard"]);
+
+                        if(response.roles.includes('ROLE_ADMIN'))
+                            this.router.navigate(["/dashboard"]);
+                        else     this.router.navigate(["/formation"]);
                     }
                     this.appInitService.getconfig().pipe(map(user => {
                         if(user){
                             let roles = [];
-                            user.roles.map(role => {
-                                roles.push(role.name);
+                            user.authorities.map(role => {
+                                roles.push(role.authority);
                             });
                             let appUser: AppUser = {
                                 id: user.id,
                                 username: user.username,
                                 uuid: user.uuid,
-                                roles: roles
+                                authorities: roles
                             }
                             this.appStore.setUser(appUser);
+                            if(user.authorities.authority[0].includes('ROLE_ADMIN'))
                             this.router.navigate(["/dashboard"]);
+                            else     this.router.navigate(["/formation"]);
+
                         }
                     })).subscribe();
                 },

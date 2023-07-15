@@ -62,46 +62,31 @@ export class MenuInitService {
         const menuItems = menu ;
         this.appStore.getUser().subscribe(
             (user) => {
-                const roles = user.roles;
+                console.log(user)
+                console.log(menuItems)
+                const roles = user.authorities;
+                console.log(roles);
                 menuItems.forEach(element => {
-                    if(element.roles.includes('ALL')) {
-                        element.visible = true;
-                        if(element.items.length) {
-                            element.items.forEach(item => {
-                                if(item.roles.includes('ALL')) {
-                                    item.visible = true;
-                                } else {
-                                    let intersection = item.roles.filter(x => roles.includes(x));
-                                    if(intersection.length) {
-                                        item.visible = true;
-                                    } else {
-                                        item.visible = false;
-                                    }
-                                }
-                            });
-                        }
-                    } else {
+
                         let intersection = element.roles.filter(x => roles.includes(x));
                         if(intersection.length) {
                             element.visible = true;
                             if(element.items.length) {
                                 element.items.forEach(item => {
-                                    if(item.roles.includes('ALL')) {
-                                        item.visible = true;
-                                    } else {
+
                                         let intersection = item.roles.filter(x => roles.includes(x));
                                         if(intersection.length) {
                                             item.visible = true;
                                         } else {
                                             item.visible = false;
                                         }
-                                    }
+
                                 });
                             }
                         } else {
                             element.visible = false;
                         }
-                    }
+
                 });
             }
             )

@@ -9,7 +9,7 @@ export class AppStore {
     id: null,
     username: null,
     uuid: null,
-    roles: []
+      authorities: []
   });
 
   constructor() {}
@@ -28,5 +28,5 @@ export interface AppUser {
     id: number;
     username: string;
     uuid: string;
-    roles: Array<string>;
+    authorities: Array<any>;
   }
