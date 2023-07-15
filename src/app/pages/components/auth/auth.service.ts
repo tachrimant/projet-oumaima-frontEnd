@@ -170,6 +170,8 @@ export class AuthService {
 
     private clearAuthData() {
         localStorage.removeItem("access_token");
+        localStorage.removeItem("user");
+        localStorage.removeItem("role");
         localStorage.removeItem("expiration");
         localStorage.removeItem("refresh_token");
     }

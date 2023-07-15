@@ -18,7 +18,7 @@ export class AdminGuard implements CanActivate {
                 element= true
             else
             {
-                this.router.navigate(['/notfound']);
+                this.router.navigate(['/dashboard']);
                 element= false
             }
 
