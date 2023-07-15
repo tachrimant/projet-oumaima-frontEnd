@@ -1,0 +1,106 @@
+<div style="padding-top: 25px">
+    <div class="dsd">
+        <button pButton pRipple [label]="btnC.label" class="p-button-primary"
+                [ngClass]="btnC.isActive?'new-btn':'new-btn-no'"
+                style="    box-shadow: unset;margin-right:10px" (click)="selectbtnC()">
+
+        </button>
+        <button pButton pRipple [label]="btnM.label" class="p-button-primary"
+                [ngClass]="btnM.isActive?'new-btn':'new-btn-no'"
+                style="    box-shadow: unset;margin-right:10px" (click)="selectbtnM()">
+
+        </button>
+
+    </div>
+</div>
+
+<div style="padding-top: 25px;">
+    <div>
+        <div class="suii">
+            <span class="dsds">{{demande}}</span>
+            <span class="p-input-icon-left" style="  width: 50%;">
+
+</span>
+
+
+        </div>
+
+
+    </div>
+
+
+    <p-table [value]="demandeConge" [tableStyle]="{ 'min-width': '50rem' }" *ngIf="demande==='Liste des formations'">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Code</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date debut</th>
+                <th>Date fin</th>
+
+
+
+                <th>Action</th>
+
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-formation>
+            <tr>
+         <td>{{formation.code}}</td>
+         <td>{{formation.title}}</td>
+         <td>{{formation.description}}</td>
+                <td>{{ formation.dateDebut | date:'shortDate'}}</td>
+                <td>{{ formation.dateFin | date:'shortDate'}}</td>
+
+
+
+                <td>
+
+                    <nb-icon (click)="openInscription(formation)" icon="plus-circle-outline" style="color:#008179"></nb-icon>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+    <p-table [value]="demandeFichePaie" [tableStyle]="{ 'min-width': '50rem' }" *ngIf="demande==='Mes formations'">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Code</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date debut</th>
+                <th>Date fin</th>
+
+
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-formation>
+            <tr>
+                <td>{{formation.formation.code}}</td>
+                <td>{{formation.formation.title}}</td>
+                <td>{{formation.formation.description}}</td>
+                <td>{{ formation.formation.dateDebut | date:'shortDate'}}</td>
+                <td>{{ formation.formation.dateFin | date:'shortDate'}}</td>
+
+
+
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+
+<p-toast></p-toast>
+<p-confirmDialog #cd [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <h3>Valider inscription</h3>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button type="button" pButton icon="pi pi-times" label="Non" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Oui" (click)="cd.accept()"></button>
+    </ng-template>
+</p-confirmDialog>

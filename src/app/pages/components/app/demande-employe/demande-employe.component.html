@@ -1,0 +1,302 @@
+<div style="padding-top: 25px">
+    <div  class="dsd">
+        <button pButton pRipple [label]="btnC.label" class="p-button-primary"
+                [ngClass]="btnC.isActive?'new-btn':'new-btn-no'"
+                style="    box-shadow: unset;margin-right:10px" (click)="selectbtnC()">
+
+        </button>
+        <button pButton pRipple [label]="btnM.label" class="p-button-primary"
+                [ngClass]="btnM.isActive?'new-btn':'new-btn-no'"
+                style="    box-shadow: unset;margin-right:10px"  (click)="selectbtnM()">
+
+        </button>
+        <button pButton pRipple [label]="btnFP.label" class="p-button-primary"
+                [ngClass]="btnFP.isActive?'new-btn':'new-btn-no'"
+                style="    box-shadow: unset;margin-right:10px"  (click)="selectbtnFP()">
+
+        </button>
+    </div>
+</div>
+
+<div style="padding-top: 25px;">
+    <div>
+        <div  class="suii">
+            <span class="dsds">{{demande}}</span>
+            <span class="p-input-icon-left" style="  width: 50%;">
+                <i class="pi pi-search"></i>
+                   <input type="text" pInputText placeholder="chercher par code ou libelle"  (keyup)="findByLibelle(libelleLike)" [(ngModel)]="libelleLike" />
+</span>
+
+            <button
+                (click)="showAdd()"
+                [label]="isAdd?'Annuler':'Ajouter'"
+                [icon]="isAdd?'pi pi-times':'pi pi-plus'" iconPos="left"
+                class="p-button-primary olol"
+                pButton
+                pRipple ></button>
+        </div>
+
+        <div  *ngIf="demande==='Demande congé' && isAdd"   class="lopm">
+            <div [formGroup]="demandeCongeFrom" style="display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: center;">
+
+                <input
+                    placeholder="Code"
+                    formControlName="code"
+                    type="text"
+                    pInputText
+                    class="dzdzd"/>
+
+
+                <input
+                    placeholder="Libelle"
+                    formControlName="libelle"
+                    type="text"
+                    pInputText
+                    class="dsdsdsdsd"/>
+                <input
+                    placeholder="Jour couvrable"
+                    formControlName="jourCouvrable"
+                    type="number"
+                    pInputText
+                    class="dzzdzdzdzdzrg"/>
+                <div  style="    margin-right: 30px;">
+                    <p-calendar
+                        formControlName="dateDebut"
+                        placeholder="Date Debut"
+                        [showIcon]="true"></p-calendar></div>
+                <div style="    margin-right: 30px;">
+                    <p-calendar
+                        formControlName="dateFin"
+                        placeholder="Date Fin"
+                        [showIcon]="true"></p-calendar></div>
+
+
+
+
+
+
+
+            </div>
+            <div style="    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;">
+                <button
+                    pButton
+                    pRipple
+                    [label]="isUpdate?'Update':'Save'"
+                    class="p-button-primary"
+                    style="    background-color: #673CB6;
+    border: 2px solid #673CB6;"
+                    [disabled]="demandeCongeFrom.invalid"
+                    (click)="save()">
+                </button>
+
+            </div>
+        </div>
+
+        <div  *ngIf="demande==='Demande de mission' && isAdd"   class="lopm">
+            <div [formGroup]="demandemissionFrom" style="display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: center;">
+
+                <input
+                    placeholder="Code"
+                    formControlName="code"
+                    type="text"
+                    pInputText
+                    class="dzdzd"/>
+
+
+                <input
+                    placeholder="Libelle"
+                    formControlName="libelle"
+                    type="text"
+                    pInputText
+                    class="dsdsdsdsd"/>
+                <div  style="    margin-right: 30px;">
+                    <p-calendar
+                        formControlName="dateDebut"
+                        placeholder="Date Debut"
+                        [showIcon]="true"></p-calendar></div>
+                <div style="    margin-right: 30px;">
+                    <p-calendar
+                        formControlName="dateFin"
+                        placeholder="Date Fin"
+                        [showIcon]="true"></p-calendar></div>
+
+
+
+            </div>
+            <div style="    display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding-top: 20px;">
+                <button
+                    pButton
+                    pRipple
+                    [label]="isUpdate?'Update':'Save'"
+                    class="p-button-primary"
+                    style="    background-color: #673CB6;
+    border: 2px solid #673CB6;"
+                    [disabled]="demandemissionFrom.invalid"
+                    (click)="save()">
+                </button>
+
+            </div>
+        </div>
+        <div  *ngIf="demande==='Demande de fiche de paie' && isAdd"   class="lopm">
+            <div [formGroup]="demandeficheFrom" style="display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: center;">
+
+                <input
+                    placeholder="Code"
+                    formControlName="code"
+                    type="text"
+                    pInputText
+                    class="dzdzd"/>
+
+
+                <div  style="    margin-right: 30px;">
+                    <p-calendar
+                        formControlName="datedemande"
+                        placeholder="Date Demande"
+                        [showIcon]="true"></p-calendar></div>
+                <div style="    margin-right: 30px;">
+                    <p-calendar
+                        formControlName="dateEnvoieFiche"
+                        placeholder="Date d'envoie "
+                        [showIcon]="true"></p-calendar></div>
+
+
+            </div>
+            <div style="    display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding-top: 20px;">
+                <button
+                    pButton
+                    pRipple
+                    [label]="isUpdate?'Update':'Save'"
+                    class="p-button-primary"
+                    style="    background-color: #673CB6;
+    border: 2px solid #673CB6;"
+                    [disabled]="demandeficheFrom.invalid"
+                    (click)="save()">
+                </button>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <p-table [value]="demandeConge" [tableStyle]="{ 'min-width': '50rem' }" *ngIf="demande==='Demande congé'">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Libelle</th>
+                <th>Code</th>
+                <th>Etat</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                 <th>Jour couvrable</th>
+                <th>Action</th>
+
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-demande  >
+            <tr >
+                <td>{{ demande.libelle }}</td>
+                <td>{{ demande.code }}</td>
+                <td>{{ demande.etat }}</td>
+                <td>{{ demande.dateDebut | date:'shortDate'}}</td>
+                <td>{{ demande.dateFin | date:'shortDate'}}</td>
+                 <td>{{ demande.jourCouvrable }}</td>
+                <td>
+                    <nb-icon (click)="openDelete(demande.id)" icon="trash" style="color:red;margin-right:10px"   ></nb-icon>
+                    <nb-icon (click)="updateElement(demande)" icon="refresh-outline" style="color:#0aff00"></nb-icon>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-table [value]="demandeMission" [tableStyle]="{ 'min-width': '50rem' }" *ngIf="demande==='Demande de mission'">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Libelle</th>
+                <th>Code</th>
+                <th>Etat</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                 <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-demande >
+            <tr >
+                <td>{{ demande.libelle }}</td>
+                <td>{{ demande.code }}</td>
+                <td>{{ demande.etat }}</td>
+                <td >{{ demande.dateDebut | date:'shortDate'}}</td>
+                <td >{{ demande.dateFin | date:'shortDate'}}</td>
+                 <td>
+                    <nb-icon (click)="openDelete(demande.id)" icon="trash" style="color:red;margin-right:10px"   ></nb-icon>
+                    <nb-icon (click)="updateElement(demande)" icon="refresh-outline" style="color:#0aff00"></nb-icon>
+                </td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+
+    <p-table [value]="demandeFichePaie" [tableStyle]="{ 'min-width': '50rem' }" *ngIf="demande==='Demande de fiche de paie'">
+        <ng-template pTemplate="header">
+            <tr >
+                <th>Code</th>
+                <th>Etat</th>
+                <th>Date demande</th>
+                <th>Date livraison</th>
+                 <th>Action</th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-demande >
+            <tr >
+                <td>{{ demande.code }}</td>
+                <td>{{ demande.etat }}</td>
+                <td>{{ demande.datedemande | date:'shortDate'}}</td>
+                <td *ngIf="demande.dateEnvoieFiche != null">{{ demande.dateEnvoieFiche | date:'shortDate'}}</td>
+                <td *ngIf="demande.dateEnvoieFiche == null">Pas encours envoyé</td>
+                 <td>
+                    <nb-icon (click)="openDelete(demande.id)" icon="trash" style="color:red;margin-right:10px"   ></nb-icon>
+                    <nb-icon (click)="updateElement(demande)" icon="refresh-outline" style="color:#0aff00"></nb-icon>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+
+<p-toast></p-toast>
+<p-confirmDialog #cd [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <h3>Supprimer demande</h3>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button type="button" pButton icon="pi pi-times" label="Non" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Oui"  (click)="cd.accept()"></button>
+    </ng-template>
+</p-confirmDialog>
