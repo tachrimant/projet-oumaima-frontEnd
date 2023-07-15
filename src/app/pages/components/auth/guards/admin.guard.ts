@@ -16,7 +16,12 @@ export class AdminGuard implements CanActivate {
         this.appStore.getUser().subscribe((res)=>{
             if(res.authorities[0]==='ROLE_ADMIN')
                 element= true
-            else element= false
+            else
+            {
+                this.router.navigate(['/notfound']);
+                element= false
+            }
+
 
         })
             return element

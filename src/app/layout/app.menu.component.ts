@@ -49,6 +49,13 @@ export class AppMenuComponent implements OnInit {
                     routerLink: ['/demande'],
                     roles: ['ROLE_ADMIN'],
                     visible: false
+                },
+                {
+                    label: 'Formation',
+                    icon: 'pi pi-fw pi-home',
+                    routerLink: ['/formation'],
+                    roles: ['ROLE_ADMIN'],
+                    visible: false
                 }
             ],
             roles: ['ROLE_ADMIN'],
@@ -67,21 +74,21 @@ export class AppMenuComponent implements OnInit {
                 {
                     label: 'Formation',
                     icon: 'pi pi-fw pi-home',
-                    routerLink: ['/formation'],
+                    routerLink: ['/formationemploye'],
                     roles: ['ROLE_USER'],
                     visible: false
                 },
                 {
                     label: 'Mes tâches',
                     icon: 'pi pi-fw pi-home',
-                    routerLink: ['/projet'],
+                    routerLink: ['/tacheemploye'],
                     roles: ['ROLE_USER'],
                     visible: false
                 },
                 {
                     label: 'Mes demandes',
                     icon: 'pi pi-fw pi-home',
-                    routerLink: ['/demande'],
+                    routerLink: ['/demandeemploye'],
                     roles: ['ROLE_USER'],
                     visible: false
                 }

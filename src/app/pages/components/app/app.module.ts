@@ -19,6 +19,9 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ToastModule} from "primeng/toast";
 import { FormationComponent } from './formation/formation.component';
 import { HomeEmployeComponent } from './home-employe/home-employe.component';
+import { DemandeEmployeComponent } from './demande-employe/demande-employe.component';
+import { FormationEmployeComponent } from './formation-employe/formation-employe.component';
+import { TacheEmployeComponent } from './tache-employe/tache-employe.component';
 
 @NgModule({
     imports: [NbButtonModule,
@@ -39,7 +42,10 @@ import { HomeEmployeComponent } from './home-employe/home-employe.component';
         DashboardComponent,
      DemandeComponent,
      FormationComponent,
-     HomeEmployeComponent
+     HomeEmployeComponent,
+     DemandeEmployeComponent,
+     FormationEmployeComponent,
+     TacheEmployeComponent
   ],
     exports:[CustomHeaderComponent],
 

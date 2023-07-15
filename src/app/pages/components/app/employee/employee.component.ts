@@ -17,7 +17,8 @@ export class EmployeeComponent implements OnInit {
     tacheFrom: FormGroup;
     empCin: any;
     saveelemnt = true;
-    constructor(private confirmationService: ConfirmationService,private fb : FormBuilder, private service : ApiJurisService, private messageService: MessageService) {
+    constructor(private confirmationService: ConfirmationService,private fb : FormBuilder, private service : ApiJurisService
+                , private messageService: MessageService) {
 
     }
 
@@ -52,6 +53,7 @@ export class EmployeeComponent implements OnInit {
 
             this.service.post('/employe/', this.tacheFrom.value).subscribe(
                 data => {
+                    this.projets = data;
                     this.projets = data;
                     this.messageService.add({ severity: 'success', summary: 'Ajouter', detail: 'Employé ajouter avec succée' });
                     this.initForm();

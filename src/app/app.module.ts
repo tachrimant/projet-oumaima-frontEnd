@@ -16,7 +16,7 @@ import { AuthInterceptor } from './pages/components/auth/auth-interceptor';
 import { AppInitService } from './pages/services/app-init.service';
 import { CustomHeaderComponent } from './pages/@core/components/custom-header/custom-header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {NbThemeModule, NbLayoutModule, NbDialogModule} from '@nebular/theme';
+import {NbThemeModule, NbLayoutModule, NbDialogModule, NbCardModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {config} from "rxjs";
 import {BrowserModule} from "@angular/platform-browser";
@@ -50,7 +50,8 @@ export function initializeApp(appInitService: AppInitService) {
         NbEvaIconsModule,
         InputTextModule,
         RippleModule,
-        ButtonModule
+        ButtonModule,
+        NbCardModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

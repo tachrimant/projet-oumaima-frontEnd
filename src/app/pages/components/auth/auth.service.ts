@@ -38,6 +38,8 @@ export class AuthService {
                      this.access_token = response['access_token'];
                     // this.refresh_token = response['refresh_token'];
                     const expires_in = response['expires_in'];
+                    const role = response.roles[0];
+                    const user = response.user;
                     if (this.access_token) {
                         this.setAuthTimer(expires_in);
                         this.isAuthenticated = true;
@@ -46,11 +48,13 @@ export class AuthService {
                         const expirationDate = new Date(
                             now.getTime() + expires_in
                         );
-                        this.saveAuthData(this.access_token, this.refresh_token, expirationDate);
-                        console.log(response);
+                        this.saveAuthData(this.access_token,role, this.refresh_token, expirationDate,user);
+
                         if(response.roles.includes('ROLE_ADMIN'))
                             this.router.navigate(["/dashboard"]);
-                        else     this.router.navigate(["/formation"]);
+                        if(response.roles.includes('ROLE_USER'))
+
+                              this.router.navigate(["/MyHome"]);
                     }
                     this.appInitService.getconfig().pipe(map(user => {
                         if(user){
@@ -156,7 +160,9 @@ export class AuthService {
         }, duration * 1000);
     }
 
-    private saveAuthData(access_token: string, refresh_token: string, expirationDate: Date) {
+    private saveAuthData(access_token: string,role: string, refresh_token: string, expirationDate: Date,user:any) {
+        localStorage.setItem("role", role);
+        localStorage.setItem("user", user);
         localStorage.setItem("access_token", access_token);
         localStorage.setItem("expiration", expirationDate.toISOString());
         localStorage.setItem("refresh_token", refresh_token);

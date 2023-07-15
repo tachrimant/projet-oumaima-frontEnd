@@ -4,11 +4,13 @@ import {Router} from '@angular/router';
 import {LayoutService} from 'src/app/config/service/app.layout.service';
 import {AuthService} from '../auth.service';
 import {ApiJurisService} from "../../../services/api-juris.service";
+import {ConfirmationService, MessageService} from "primeng/api";
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    styleUrls: ['./login.component.scss'],
+        providers: [ConfirmationService, MessageService]
 })
 export class LoginComponent {
 
@@ -24,8 +26,8 @@ export class LoginComponent {
         public fb: FormBuilder,
         public authService: AuthService,
         private apiJurisService: ApiJurisService,
-        public router: Router
-    ) {
+        public router: Router, private messageService: MessageService) {
+
         this.signForm = this.fb.group({
             username: [''],
             password: [''],
@@ -49,7 +51,18 @@ export class LoginComponent {
 
     save() {
         this.apiJurisService.post('/employe/', this.registreForm.value).subscribe((res) => {
-console.log('cooooool')
+
+            this.registreForm = this.fb.group({
+                username: [null, Validators.required],
+                nom: [null, Validators.required],
+                prenom: [null, Validators.required],
+                email: [null, Validators.required],
+                datenaissance: [null, Validators.required],
+                cin: [null, Validators.required],
+                password: [null, Validators.required],
+            });
+            this.messageService.add({ severity: 'success', summary: 'Ajouter', detail: 'Employé ajouter avec succée' });
+
         })
     }
 }

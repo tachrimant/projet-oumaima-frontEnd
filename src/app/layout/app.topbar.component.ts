@@ -39,17 +39,7 @@ export class AppTopBarComponent {
             });
          this.home = {icon: 'pi pi-home'};
         this.items = [
-            {
-               label:'Profile',
-               icon:'pi pi-user',
-            },
-            {
-               label:'Edit',
-               icon:'pi pi-fw pi-pencil',
-            },
-            {
-               separator:true
-            },
+
             {
                label:'Sign out',
                icon:'pi pi-fw pi-power-off',

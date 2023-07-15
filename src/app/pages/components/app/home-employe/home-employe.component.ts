@@ -15,7 +15,7 @@ export class HomeEmployeComponent implements OnInit {
     projects;
     currentUser:any;
     employes = [];
-    projets = [];
+    formations = [];
     contrats = [];
     taches = [];
     demadeConge = [];
@@ -31,7 +31,7 @@ export class HomeEmployeComponent implements OnInit {
           this.currentUser=  user
       })
       this.findAllEmploye()
-      this.findAllProjets()
+      this.findAllformations()
       this.findAllContrat()
       this.findAlltaches()
       this.findElementTable()
@@ -86,11 +86,11 @@ export class HomeEmployeComponent implements OnInit {
             }
         )
     }
-    findAllProjets(){
-        this.service.get('/projet/').subscribe(
+    findAllformations(){
+        this.service.get('/formation/').subscribe(
             data => {
 
-                this.projets = data;
+                this.formations = data;
             }
         )
     }
