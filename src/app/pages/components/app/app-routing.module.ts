@@ -7,6 +7,7 @@ import {DemandeComponent} from "./demande/demande.component";
 import {ProjetComponent} from "./projet/projet.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {FormationComponent} from "./formation/formation.component";
+import {HomeEmployeComponent} from "./home-employe/home-employe.component";
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import {FormationComponent} from "./formation/formation.component";
             {path:'projet',component:ProjetComponent},
             {path:'demande',component:DemandeComponent},
             {path:'formation',component:FormationComponent},
+            {path:'MyHome',component:HomeEmployeComponent},
             {path: '',redirectTo:'dashboard', pathMatch: 'full'},
         ])
     ]

@@ -18,6 +18,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ToastModule} from "primeng/toast";
 import { FormationComponent } from './formation/formation.component';
+import { HomeEmployeComponent } from './home-employe/home-employe.component';
 
 @NgModule({
     imports: [NbButtonModule,
@@ -37,7 +38,8 @@ import { FormationComponent } from './formation/formation.component';
      ProjetComponent,
         DashboardComponent,
      DemandeComponent,
-     FormationComponent
+     FormationComponent,
+     HomeEmployeComponent
   ],
     exports:[CustomHeaderComponent],
 
