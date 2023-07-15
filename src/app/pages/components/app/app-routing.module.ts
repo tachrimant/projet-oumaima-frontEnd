@@ -17,7 +17,7 @@ import {FormationEmployeComponent} from "./formation-employe/formation-employe.c
 @NgModule({
     imports: [
         RouterModule.forChild([
-            {path: 'dashboard',component:DashboardComponent, canActivate: [AdminGuard]},
+            {path: 'dashboard',component:DashboardComponent },
             {path:'employee',component:EmployeeComponent, canActivate: [AdminGuard] },
             {path:'contrat',component:ContratComponent, canActivate: [AdminGuard] },
             {path:'projet',component:ProjetComponent, canActivate: [AdminGuard] },
@@ -29,7 +29,7 @@ import {FormationEmployeComponent} from "./formation-employe/formation-employe.c
             {path:'tacheemploye',component:TacheEmployeComponent , canActivate: [UserGuard]  },
 
             {path:'formationemploye',component:FormationEmployeComponent , canActivate: [UserGuard]},
-            {path:'MyHome',component:HomeEmployeComponent , canActivate: [UserGuard]},
+            {path:'MyHome',component:HomeEmployeComponent },
             {path: '',redirectTo:'dashboard', pathMatch: 'full'},
         ])
     ]

@@ -19,13 +19,23 @@ export class UserGuard implements CanActivate {
                     element= true
                 else
                 {
-                    this.router.navigate(['/MyHome']);
+
                     element= false
                 }
 
 
             })
-            return element
+            if (!element)
+            {
+
+                this.router.navigate(['/MyHome']);
+                return element
+            }
+            else{
+                return element
+            }
+
+
         } else {
             this.router.navigate(['/login']);
             return false;
