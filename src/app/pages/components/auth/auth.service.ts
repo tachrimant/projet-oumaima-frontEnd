@@ -47,7 +47,7 @@ export class AuthService {
                             now.getTime() + expires_in
                         );
                         this.saveAuthData(this.access_token, this.refresh_token, expirationDate);
-
+                        console.log(response);
                         if(response.roles.includes('ROLE_ADMIN'))
                             this.router.navigate(["/dashboard"]);
                         else     this.router.navigate(["/formation"]);
