@@ -24,35 +24,35 @@ export class AppMenuComponent implements OnInit {
                 } ,
                 {
                     label: 'Employée',
-                    icon: 'pi pi-fw pi-home',
+                    icon: 'pi pi-fw pi-users',
                     routerLink: ['/employee'],
                     roles: ['ROLE_ADMIN'],
                     visible: false
                 },
                 {
                     label: 'Contrat',
-                    icon: 'pi pi-fw pi-home',
+                    icon: 'pi pi-fw pi-file',
                     routerLink: ['/contrat'],
                     roles: ['ROLE_ADMIN'],
                     visible: false
                 },
                 {
                     label: 'Projet',
-                    icon: 'pi pi-fw pi-home',
+                    icon: 'pi pi-fw pi-inbox',
                     routerLink: ['/projet'],
                     roles: ['ROLE_ADMIN'],
                     visible: false
                 },
                 {
                     label: 'Demande',
-                    icon: 'pi pi-fw pi-home',
+                    icon: 'pi pi-fw pi-copy',
                     routerLink: ['/demande'],
                     roles: ['ROLE_ADMIN'],
                     visible: false
                 },
                 {
                     label: 'Formation',
-                    icon: 'pi pi-fw pi-home',
+                    icon: 'pi pi-fw pi-sitemap',
                     routerLink: ['/formation'],
                     roles: ['ROLE_ADMIN'],
                     visible: false
@@ -73,21 +73,21 @@ export class AppMenuComponent implements OnInit {
                 },
                 {
                     label: 'Formation',
-                    icon: 'pi pi-fw pi-home',
+                    icon: 'pi pi-fw pi-sitemap',
                     routerLink: ['/formationemploye'],
                     roles: ['ROLE_USER'],
                     visible: false
                 },
                 {
                     label: 'Mes tâches',
-                    icon: 'pi pi-fw pi-home',
+                    icon: 'pi pi-fw pi-microsoft',
                     routerLink: ['/tacheemploye'],
                     roles: ['ROLE_USER'],
                     visible: false
                 },
                 {
                     label: 'Mes demandes',
-                    icon: 'pi pi-fw pi-home',
+                    icon: 'pi pi-fw pi-copy',
                     routerLink: ['/demandeemploye'],
                     roles: ['ROLE_USER'],
                     visible: false

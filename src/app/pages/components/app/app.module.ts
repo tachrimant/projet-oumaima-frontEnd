@@ -22,6 +22,7 @@ import { HomeEmployeComponent } from './home-employe/home-employe.component';
 import { DemandeEmployeComponent } from './demande-employe/demande-employe.component';
 import { FormationEmployeComponent } from './formation-employe/formation-employe.component';
 import { TacheEmployeComponent } from './tache-employe/tache-employe.component';
+import {DialogModule} from "primeng/dialog";
 
 @NgModule({
     imports: [NbButtonModule,
@@ -30,7 +31,7 @@ import { TacheEmployeComponent } from './tache-employe/tache-employe.component';
         OverlayPanelModule,
         ButtonModule,
         NbSelectModule,
-        NbDialogModule.forChild(), TableModule, InputTextModule, NbIconModule, RippleModule, CalendarModule, ReactiveFormsModule, FormsModule, ConfirmDialogModule, ToastModule,
+        NbDialogModule.forChild(), TableModule, InputTextModule, NbIconModule, RippleModule, CalendarModule, ReactiveFormsModule, FormsModule, ConfirmDialogModule, ToastModule, DialogModule,
 
     ],
     declarations: [

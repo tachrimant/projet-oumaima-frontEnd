@@ -10,65 +10,20 @@
             <button
                 pButton
                 pRipple
-                [label]="!this.isAdd?'Ajouter':'Annuler'"
+                [label]="'Ajouter'"
                 class="p-button-primary bbtn"
                 (click)="addElement()">
             </button>
 
 
         </div>
-        <div [formGroup]="formationFrom" *ngIf="isAdd" style="padding-top: 25px;">
-            <div class="def">
-                <input
-                    placeholder="Description"
-                    type="text"
-                    pInputText
-                    class="frt"
-                    formControlName="description"/>
-                <input
-                    placeholder="Code"
-                    type="text"
-                    pInputText
-                    class="frt"
-                    formControlName="code"/>
-                <input
-                    placeholder="Title"
-                    type="text"
-                    pInputText
-                    class="frt"
-                    formControlName="title"/>
 
-                <p-calendar    formControlName="dateDebut" placeholder="Date debut" [showIcon]="true"></p-calendar>
-                <p-calendar formControlName="dateFin" placeholder="Date fin" [showIcon]="true" class="heyhey"></p-calendar>
-
-
-            </div>
-            <div style="    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding-top: 20px;">
-                <button
-                    pButton
-                    pRipple
-                    [label]="isUpdate?'Update':'Save'"
-                    class="p-button-primary"
-                    style="    background-color: #673CB6;
-    border: 2px solid #673CB6;"
-                    [disabled]="formationFrom.invalid"
-                    (click)="save()">
-                </button>
-
-            </div>
-            <div>
-            </div>
-        </div>
     </div>
 
     <p-table [value]="taches" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
-                <th>Code</th>
+                <th>Specialite</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Date debut</th>
@@ -87,7 +42,7 @@
                 <td>{{ formation.dateDebut | date:'shortDate'}}</td>
                 <td>{{ formation.dateFin | date:'shortDate' }}</td>
                  <td>
-                      <nb-icon (click)="updateElement(formation)" icon="refresh-outline" style="color:#0aff00"></nb-icon>
+                      <nb-icon (click)="addElement(formation)" icon="refresh-outline" style="color:#0aff00"></nb-icon>
                 </td>
             </tr>
         </ng-template>
@@ -105,3 +60,84 @@
         <button type="button" pButton icon="pi pi-check" label="Oui"  (click)="cd.accept()"></button>
     </ng-template>
 </p-confirmDialog>
+
+
+ <p-dialog header="Ajouter formation" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+     <form [formGroup]="formationFrom">
+
+
+    <div class="row" style="width: 100%;">
+        <div class="col-6">      <input
+            placeholder="Description"
+            type="text"
+            pInputText
+            class="frt"
+            style="width: 100%;"
+            formControlName="description"/></div>
+        <div class="col-6">
+            <input
+                placeholder="Specialite"
+                type="text"
+                pInputText
+                class="frt"
+                style="width: 100%;"
+                formControlName="code"/>
+        </div>
+        <div class="col-6">      <input
+            placeholder="Title"
+            type="text"
+            pInputText
+            class="frt"
+            style="width: 100%;"
+            formControlName="title"/></div>
+        <div class="col-6">
+            <input
+                placeholder="Date debut"
+                formControlName="dateDebut"
+                type="date"
+                pInputText
+                class="frt"
+                style="width: 100%;" >
+        </div>
+        <div class="col-6">
+         <input     placeholder="Date fin"
+                    formControlName="dateFin"
+                    type="date"
+                    pInputText
+                    class="frt"
+                    style="width: 100%;">
+        </div>
+        <div class="col-6"></div>
+    </div>
+     <div class="row" style="width: 100%;">
+         <div class="col-12" style="    display: flex;
+    flex-direction: row;
+    justify-content: center;">
+             <button
+                 pButton
+                 pRipple
+                 [label]="'Fermer'"
+                 class="p-button-primary"
+                 style="    background-color: #949494;
+    border: 2px solid #949494;    margin-right: 10px;"
+
+                 (click)="this.visible=!this.visible">
+             </button>
+             <button
+                 pButton
+                 pRipple
+                 [label]="isUpdate?'Update':'Save'"
+                 class="p-button-primary"
+                 style="    background-color: #673CB6;
+    border: 2px solid #673CB6;"
+                 [disabled]="formationFrom.invalid"
+                 (click)="save()">
+             </button>
+         </div>
+     </div>
+
+     <div>
+     </div>
+
+     </form>
+</p-dialog>

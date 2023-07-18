@@ -23,6 +23,7 @@ export class FormationComponent implements OnInit {
     projets = [];
     taches = [];
     libelle: string;
+    visible: boolean=false;
 
     ngOnInit(): void {
         this.findAllEmploye()
@@ -71,11 +72,19 @@ export class FormationComponent implements OnInit {
         )
     }
 
-    addElement(){
-        this.isUpdate=false
-        this.saveelement = true;
-        this.initForm()
-        this.isAdd=!this.isAdd;
+    addElement(value?){
+        if(!value){
+            this.isUpdate=false
+            this.saveelement = true;
+            this.initForm()
+            // this.isAdd=!this.isAdd;
+            this.visible=!this.visible
+        }else{
+            this.updateElement(value)
+
+
+        }
+
     }
 
     save(){
@@ -101,6 +110,7 @@ export class FormationComponent implements OnInit {
                 }
             )
         }
+        this.visible=!this.visible
 
     }
 
@@ -135,15 +145,18 @@ export class FormationComponent implements OnInit {
         this.isAdd=true
         this.isUpdate=true
         this.saveelement = false;
-
+        this.visible=!this.visible
         this.formationFrom.patchValue({
             id : formation.id,
-            dateDebut : new Date(formation.dateDebut),
-            dateFin : new Date(formation.dateFin),
+            // dateDebut : new Date(formation.dateDebut),
+            //dateFin : new Date(formation.dateFin),
             title : formation.title,
             description : formation.description,
             code :formation.code,
         })
+        this.formationFrom.get('dateDebut').setValue(new Date(formation.dateDebut).toISOString().substr(0, 10));
+        this.formationFrom.get('dateFin').setValue(new Date(formation.dateFin).toISOString().substr(0, 10));
+
     }
 
     finByprojetLibelle(libelle: string) {
