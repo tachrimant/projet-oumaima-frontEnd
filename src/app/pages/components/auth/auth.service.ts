@@ -56,7 +56,7 @@ export class AuthService {
                               this.router.navigate(["/MyHome"]);
                     }
                     this.appInitService.getconfig(user).subscribe((res:any) => {
-debugger
+
                         if(res){
                             debugger
                             let roles = [];

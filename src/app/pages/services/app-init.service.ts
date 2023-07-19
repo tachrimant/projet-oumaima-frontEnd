@@ -5,7 +5,6 @@ import { EMPTY, map } from 'rxjs';
 import { AppStore, AppUser } from './app-store.service';
 import { StoreAuthentication } from '../components/auth/auth.service';
 import { Router } from '@angular/router';
-import {ApiJurisService} from "./api-juris.service";
 const BACKEND_URL = environment.apiUrl ;
 
 @Injectable({
@@ -17,20 +16,19 @@ export class AppInitService {
         private http: HttpClient,
         private appStore: AppStore,
         public router: Router,
-        private storeAuth: StoreAuthentication,
-        private service:ApiJurisService
+        private storeAuth: StoreAuthentication
     ) {
     }
 
     Init() {
         return new Promise<any>((resolve: Function) => {
-             const authToken = this.storeAuth.getTokenIsValidFromLocalStorage();
+            console.log("AppInitService.init() called");
+            const authToken = this.storeAuth.getTokenIsValidFromLocalStorage();
             if(!authToken) {
                 this.router.navigate(['/auth/login'])
                 return resolve();
             } else {
-                console.log('ola ola ola1')
-                return this.getconfig(localStorage.getItem('user')).subscribe((user:any)=>{
+                return this.getconfig(localStorage.getItem('user')).pipe(map(user => {
                     if(user){
                         let roles = [];
                         user.authorities.map(role => {
@@ -44,28 +42,11 @@ export class AppInitService {
                         }
                         this.appStore.setUser(appUser);
                     }
-                })
-                //     .subscribe(
-                //     (user)=> {
-                //
-                //             if(user){
-                //                 let roles = [];
-                //                 user.authorities.map(role => {
-                //                     roles.push(role.authority);
-                //                 });
-                //                 let appUser: AppUser = {
-                //                     id: user.id,
-                //                     username: user.username,
-                //                     uuid: user.uuid,
-                //                     authorities: roles
-                //                 }
-                //                 this.appStore.setUser(appUser);
-                //             }
-                //
-                //     },
-                //     (_)=> resolve(),
-                //
-                // )
+                })).subscribe(
+                    (_)=> {console.log('AppInitService Finished');},
+                    (_)=> resolve(),
+                    ()=> resolve(),
+                )
             }
 
 
@@ -76,10 +57,25 @@ export class AppInitService {
         });
     }
 
+
+
+
     getconfig(id) {
 
         return this.http
-            .get("http://localhost:8036/api/users/profile/"+id)
+            .get<any>(BACKEND_URL + "/api/users/profile/"+id)
+        // .pipe(map(user => {
+        //     if(user){
 
+        //     }
+        // }))
+        // .subscribe(
+        //     (response) => {
+        //         this.user = response;
+        //     },
+        //     error => {
+        //         console.log(error);
+        //     }
+        // );
     }
 }
