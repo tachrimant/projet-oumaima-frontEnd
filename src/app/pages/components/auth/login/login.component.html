@@ -50,7 +50,7 @@
         <div class="form-content">
             <div class="login-form">
                 <div class="title">Login</div>
-                <form [formGroup]="signForm" (ngSubmit)="login()">
+                <form [formGroup]="signForm">
                     <div class="input-boxes">
                         <div class="input-box">
                             <i class="fas fa-envelope"></i>
@@ -71,7 +71,10 @@
                              />
                         </div>
                          <div class="button input-box">
-                            <input type="submit" value="Login" />
+
+                              <button nbButton fullWidth status="primary" (click)="login()" [disabled]="signForm.invalid">Login</button>
+
+
                         </div>
                         <div class="text sign-up-text">
                             Don't have an account? <label for="flip">Sigup now</label>
@@ -81,7 +84,7 @@
             </div>
             <div class="signup-form">
                 <div class="title">Signup</div>
-                <form  [formGroup]="registreForm" (ngSubmit)="save()">
+                <form  [formGroup]="registreForm" >
                     <div class="input-boxes">
                         <div class="input-box">
                             <i class="fas fa-user"></i>
@@ -152,7 +155,10 @@
 
 
                         <div class="button input-box">
-                            <input type="submit" value="Sumbit" />
+
+                             <button nbButton fullWidth status="primary" (click)="save()" [disabled]="registreForm.invalid">Sumbit</button>
+
+
                         </div>
                         <div class="text sign-up-text">
                             Already have an account? <label for="flip">Login now</label>

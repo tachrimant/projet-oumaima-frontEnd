@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import {ToastModule} from "primeng/toast";
+import {NbButtonModule} from "@nebular/theme";
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import {ToastModule} from "primeng/toast";
         FormsModule,
         ReactiveFormsModule,
         PasswordModule,
-        ToastModule
+        ToastModule,
+        NbButtonModule
     ],
     declarations: [LoginComponent]
 })

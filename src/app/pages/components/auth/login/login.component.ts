@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LayoutService} from 'src/app/config/service/app.layout.service';
@@ -12,7 +12,7 @@ import {ConfirmationService, MessageService} from "primeng/api";
     styleUrls: ['./login.component.scss'],
         providers: [ConfirmationService, MessageService]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
     signForm: FormGroup;
     registreForm: FormGroup;
@@ -28,19 +28,7 @@ export class LoginComponent {
         private apiJurisService: ApiJurisService,
         public router: Router, private messageService: MessageService) {
 
-        this.signForm = this.fb.group({
-            username: [''],
-            password: [''],
-        });
-        this.registreForm = this.fb.group({
-            username: [null, Validators.required],
-            nom: [null, Validators.required],
-            prenom: [null, Validators.required],
-            email: [null, Validators.required],
-            datenaissance: [null, Validators.required],
-            cin: [null, Validators.required],
-            password: [null, Validators.required],
-        })
+
     }
 
     login() {
@@ -64,5 +52,23 @@ export class LoginComponent {
             this.messageService.add({ severity: 'success', summary: 'Ajouter', detail: 'Employé ajouter avec succée' });
 
         })
+    }
+
+
+    ngOnInit(): void{
+
+    this.signForm = this.fb.group({
+        username: [null, Validators.required],
+        password: [null, Validators.required],
+    });
+    this.registreForm = this.fb.group({
+        username: [null, Validators.required],
+        nom: [null, Validators.required],
+        prenom: [null, Validators.required],
+        email: [null, Validators.required],
+        datenaissance: [null, Validators.required],
+        cin: [null, Validators.required],
+        password: [null, Validators.required],
+    })
     }
 }

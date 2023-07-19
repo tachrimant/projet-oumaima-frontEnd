@@ -29,7 +29,8 @@
 
             <button
                 (click)="showAdd()"
-                [label]="isAdd?'Annuler':'Ajouter'"
+                *ngIf="isUpdate"
+                [label]="'Annuler'"
                 [icon]="isAdd?'pi pi-times':'pi pi-plus'" iconPos="left"
                 class="p-button-primary olol"
                 pButton
@@ -44,6 +45,7 @@
     align-items: center;">
 
                 <input
+                    [disabled]="true"
                     placeholder="Code"
                     formControlName="code"
                     type="text"
@@ -57,24 +59,29 @@
                     pInputText
                     class="dsdsdsdsd"/>
                 <input
+                    [disabled]="true"
                     placeholder="Libelle"
                     formControlName="libelle"
                     type="text"
                     pInputText
                     class="dsdsdsdsd"/>
                 <input
+                    [disabled]="true"
                     placeholder="Jour couvrable"
                     formControlName="jourCouvrable"
                     type="number"
                     pInputText
                     class="dzzdzdzdzdzrg"/>
-                <div  style="    margin-right: 30px;">
+                <div
+                    style="    margin-right: 30px;">
                     <p-calendar
+                        [disabled]="true"
                     formControlName="dateDebut"
                     placeholder="Date Debut"
                     [showIcon]="true"></p-calendar></div>
                 <div style="    margin-right: 30px;">
                     <p-calendar
+                        [disabled]="true"
                     formControlName="dateFin"
                     placeholder="Date Fin"
                     [showIcon]="true"></p-calendar></div>
@@ -82,7 +89,8 @@
 
 
 
-                <nb-select placeholder="Select employe" formControlName="employee" >
+                <nb-select placeholder="Select employe" formControlName="employee"
+                           [disabled]="true">
                     <nb-option *ngFor="let employe of employes" [value]="employe">{{employe.nom +" " +employe.prenom}}</nb-option>
                 </nb-select>
 
@@ -115,6 +123,7 @@
     align-items: center;">
 
                 <input
+                    [disabled]="true"
                     placeholder="Code"
                     formControlName="code"
                     type="text"
@@ -128,23 +137,24 @@
                     pInputText
                     class="dsdsdsdsd"/>
                 <input
+                    [disabled]="true"
                     placeholder="Libelle"
                     formControlName="libelle"
                     type="text"
                     pInputText
                     class="dsdsdsdsd"/>
                 <div  style="    margin-right: 30px;">
-                    <p-calendar
+                    <p-calendar [disabled]="true"
                     formControlName="dateDebut"
                     placeholder="Date Debut"
                     [showIcon]="true"></p-calendar></div>
                 <div style="    margin-right: 30px;">
-                    <p-calendar
+                    <p-calendar [disabled]="true"
                     formControlName="dateFin"
                     placeholder="Date Fin"
                     [showIcon]="true"></p-calendar></div>
 
-                <nb-select placeholder="Select employe" formControlName="employee" >
+                <nb-select placeholder="Select employe" formControlName="employee" [disabled]="true">
                     <nb-option *ngFor="let employe of employes" [value]="employe">{{employe.nom +" " +employe.prenom}}</nb-option>
                 </nb-select>
 
@@ -176,6 +186,7 @@
     align-items: center;">
 
                 <input
+                    [disabled]="true"
                     placeholder="Code"
                     formControlName="code"
                     type="text"
@@ -190,16 +201,18 @@
                     class="dsdsdsdsd"/>
                 <div  style="    margin-right: 30px;">
                     <p-calendar
+                        [disabled]="true"
                     formControlName="datedemande"
                     placeholder="Date Demande"
                     [showIcon]="true"></p-calendar></div>
                 <div style="    margin-right: 30px;">
                     <p-calendar
+                        [disabled]="true"
                     formControlName="dateEnvoieFiche"
                     placeholder="Date d'envoie "
                     [showIcon]="true"></p-calendar></div>
 
-                <nb-select placeholder="Select employe" formControlName="employe" >
+                <nb-select placeholder="Select employe" formControlName="employe"  [disabled]="true">
                     <nb-option *ngFor="let employe of employes" [value]="employe">{{employe.nom +" " +employe.prenom}}</nb-option>
                 </nb-select>
 

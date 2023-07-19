@@ -34,7 +34,7 @@ export class AuthService {
             )
             .subscribe(
                 response => {
-
+debugger
                      this.access_token = response['access_token'];
                     // this.refresh_token = response['refresh_token'];
                     const expires_in = response['expires_in'];
@@ -137,7 +137,7 @@ export class AuthService {
         if (expiresIn > 0) {
             this.access_token = authInformation.access_token;
             this.isAuthenticated = true;
-            this.refresh_token = authInformation.refresh_token;
+            // this.refresh_token = authInformation.refresh_token;
             this.setAuthTimer(expiresIn / 1000);
             this.authStatusListener.next(true);
         }
@@ -165,7 +165,7 @@ export class AuthService {
         localStorage.setItem("user", user);
         localStorage.setItem("access_token", access_token);
         localStorage.setItem("expiration", expirationDate.toISOString());
-        localStorage.setItem("refresh_token", refresh_token);
+        // localStorage.setItem("refresh_token", refresh_token);
     }
 
     private clearAuthData() {
@@ -173,20 +173,20 @@ export class AuthService {
         localStorage.removeItem("user");
         localStorage.removeItem("role");
         localStorage.removeItem("expiration");
-        localStorage.removeItem("refresh_token");
+        // localStorage.removeItem("refresh_token");
     }
 
     private getAuthData() {
         const access_token = localStorage.getItem("access_token");
         const expirationDate = localStorage.getItem("expiration");
-        const refresh_token = localStorage.getItem("refresh_token");
+        // const refresh_token = localStorage.getItem("refresh_token");
         if (!access_token || !expirationDate) {
             return null;
         }
         return {
             access_token: access_token,
             expirationDate: new Date(expirationDate),
-            refresh_token: refresh_token
+            // refresh_token: refresh_token
         };
     }
 }
