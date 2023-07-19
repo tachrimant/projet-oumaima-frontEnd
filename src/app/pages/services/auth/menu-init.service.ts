@@ -59,9 +59,11 @@ export class MenuInitService {
         },
     ]
     initMenu(menu) {
+
         const menuItems = menu ;
         this.appStore.getUser().subscribe(
             (user) => {
+
 
                 const roles = user.authorities;
 

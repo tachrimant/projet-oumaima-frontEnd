@@ -25,8 +25,7 @@ export class AuthService {
     ) { }
 
     login(form:any) {
-        // const authData = { username: username, password: password };
-        // const authFormData = convertToFormData(authData);
+
         this.http
             .post<any>(
                 BACKEND_URL + "/login",
@@ -34,7 +33,7 @@ export class AuthService {
             )
             .subscribe(
                 response => {
-debugger
+                    debugger
                      this.access_token = response['access_token'];
                     // this.refresh_token = response['refresh_token'];
                     const expires_in = response['expires_in'];
@@ -56,25 +55,27 @@ debugger
 
                               this.router.navigate(["/MyHome"]);
                     }
-                    this.appInitService.getconfig().pipe(map(user => {
-                        if(user){
+                    this.appInitService.getconfig(user).subscribe((res:any) => {
+debugger
+                        if(res){
+                            debugger
                             let roles = [];
-                            user.authorities.map(role => {
+                            res.authorities.map(role => {
                                 roles.push(role.authority);
                             });
                             let appUser: AppUser = {
-                                id: user.id,
-                                username: user.username,
-                                uuid: user.uuid,
+                                id: res.id,
+                                username: res.username,
+                                uuid: res.uuid,
                                 authorities: roles
                             }
                             this.appStore.setUser(appUser);
-                            if(user.authorities.authority[0].includes('ROLE_ADMIN'))
-                            this.router.navigate(["/dashboard"]);
+                            if(res.authorities.authority[0].includes('ROLE_ADMIN'))
+                                this.router.navigate(["/dashboard"]);
                             else     this.router.navigate(["/formation"]);
 
                         }
-                    })).subscribe();
+                    });
                 },
                 error => {
                     this.authStatusListener.next(false);
