@@ -32,7 +32,6 @@ export class FormationComponent implements OnInit {
         this.findAll();
     }
 
-
     findAllEmploye(){
         this.service.get('/employe/').subscribe(
             data => {
@@ -160,10 +159,14 @@ export class FormationComponent implements OnInit {
     }
 
     finByprojetLibelle(libelle: string) {
-        this.service.get('/tache/code/' + libelle).subscribe(
-            data => {
-                this.taches = data;
-            }
-        )
+        if (libelle.length == 0) this.findAll();
+        else {
+            this.service.get('/formation/code/' + libelle).subscribe(
+                data => {
+                    this.taches = data;
+                }
+            )
+        }
+
     }
 }

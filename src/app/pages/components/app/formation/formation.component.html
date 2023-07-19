@@ -6,7 +6,7 @@
         </span>
             <span class="p-input-icon-left" style="width: 50%;">
     <i class="pi pi-search"></i>
-    <input type="text" placeholder="nom du projet" (keyup)="finByprojetLibelle(libelle)" [(ngModel)]="libelle" pInputText/></span>
+    <input type="text" placeholder="specialité" (keyup)="finByprojetLibelle(libelle)" [(ngModel)]="libelle" pInputText/></span>
             <button
                 pButton
                 pRipple
@@ -67,7 +67,10 @@
 
 
     <div class="row" style="width: 100%;">
-        <div class="col-6">      <input
+        <div class="col-6">
+            <label>Description</label>
+
+            <input
             placeholder="Description"
             type="text"
             pInputText
@@ -75,6 +78,8 @@
             style="width: 100%;"
             formControlName="description"/></div>
         <div class="col-6">
+            <label>Specialité</label>
+
             <input
                 placeholder="Specialite"
                 type="text"
@@ -83,14 +88,18 @@
                 style="width: 100%;"
                 formControlName="code"/>
         </div>
-        <div class="col-6">      <input
-            placeholder="Title"
+        <div class="col-6">
+            <label>Titre</label>
+
+            <input
+            placeholder="Titre"
             type="text"
             pInputText
             class="frt"
             style="width: 100%;"
             formControlName="title"/></div>
         <div class="col-6">
+            <label>Date debut</label>
             <input
                 placeholder="Date debut"
                 formControlName="dateDebut"
@@ -100,7 +109,9 @@
                 style="width: 100%;" >
         </div>
         <div class="col-6">
-         <input     placeholder="Date fin"
+            <label>Date fin</label>
+
+            <input     placeholder="Date fin"
                     formControlName="dateFin"
                     type="date"
                     pInputText

@@ -269,6 +269,7 @@ export class FormationEmployeComponent implements OnInit {
     updateElement(demande) {
 
         let formationEmploye = { 'employe' : this.employe , 'formation' : demande }
+        console.log(formationEmploye);
          this.service.post('/formationEmploye/',formationEmploye).subscribe((el)=>{
              console.log('formationEmploye==>'+el)
              this.messageService.add({
