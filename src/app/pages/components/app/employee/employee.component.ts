@@ -58,6 +58,9 @@ export class EmployeeComponent implements OnInit {
                     this.messageService.add({ severity: 'success', summary: 'Ajouter', detail: 'Employé ajouter avec succée' });
                     this.initForm();
 
+                },error => {
+                    this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Employé déjà existe' });
+
                 }
             )
         }
@@ -69,7 +72,10 @@ export class EmployeeComponent implements OnInit {
                     this.messageService.add({ severity: 'success', summary: 'Mis à jour', detail: 'Employé mis à jour avec succée' });
                     this.initForm();
                     this.isAdd = false;
-                }
+                },error => {
+                this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'le nouveau Email ou Cin déjà existe' });
+
+            }
             )
         }
     }

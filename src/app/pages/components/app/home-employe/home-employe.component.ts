@@ -27,7 +27,6 @@ export class HomeEmployeComponent implements OnInit {
 
   ngOnInit(): void {
       this.appStore.getUser().subscribe((user)=>{
-
           this.currentUser=  user
       })
       this.findAllEmploye()
@@ -45,18 +44,18 @@ export class HomeEmployeComponent implements OnInit {
 
     findElementTable() {
         if (this.demande == "Demande congé") {
-            this.service.get('/demandeconge/').subscribe(res => {
+            this.service.get('/demandeconge/employe/' + localStorage.getItem('user')).subscribe(res => {
                 this.demadeConge = res
             })
         }
 
         if (this.demande == "Demande de fiche de paie") {
-            this.service.get('/demandedefichedepaie/').subscribe(res => {
+            this.service.get('/demandedefichedepaie/employe/' + localStorage.getItem('user')).subscribe(res => {
                 this.demadeFichePaie = res
             })
         }
         if (this.demande == "Demande de mission") {
-            this.service.get('/demandemission/').subscribe(res => {
+            this.service.get('/demandemission/employe/' + localStorage.getItem('user')).subscribe(res => {
                 this.demadeMission = res
             })
         }
@@ -64,7 +63,7 @@ export class HomeEmployeComponent implements OnInit {
 
 
     findAlltaches(){
-        this.service.get('/tache/').subscribe(
+        this.service.get('/tache/employe/' + localStorage.getItem('user')).subscribe(
             data => {
                 this.taches = data;
             }
