@@ -1,0 +1,69 @@
+<div style="padding-top: 25px">
+    <div  class="dsd">
+        <button pButton pRipple [label]="'Société'" class="p-button-primary"
+                [ngClass]="'new-btn-no'"
+                style="box-shadow: unset;margin-right:10px">
+
+        </button>
+        <button pButton pRipple [label]="'Departement'" class="p-button-primary"
+                [ngClass]="'new-btn'"
+                style="    box-shadow: unset;margin-right:10px" >
+
+        </button>
+    </div>
+</div>
+
+<div style="padding-top: 25px;">
+    <div>
+        <div  class="suii">
+            <span class="dsds">Liste des departement</span>
+            <span class="p-input-icon-left" style="  width: 50%;">
+                <i class="pi pi-search"></i>
+                   <input type="text" pInputText placeholder="chercher par libelle" />
+            </span>
+
+            <button
+
+                [label]="'Ajouter'"
+                [icon]="'pi pi-plus'" iconPos="left"
+                class="p-button-primary olol"
+                pButton
+                pRipple ></button>
+        </div>
+    </div>
+
+
+
+    <p-table  [value]="demandeConge" [tableStyle]="{ 'min-width': '50rem', 'align-items':'center' }" >
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nom</th>
+                <th>Action</th>
+
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-demande  >
+            <tr >
+                <td>{{ demande.nom }}</td>
+                <td>
+                    <nb-icon  icon="trash" style="color:red;margin-right:10px"   ></nb-icon>
+                    <nb-icon  icon="refresh-outline" style="color:#0aff00"></nb-icon>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>
+
+<!--
+<p-toast></p-toast>
+<p-confirmDialog #cd [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <h3>Supprimer demande</h3>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button type="button" pButton icon="pi pi-times" label="Non" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Oui"  (click)="cd.accept()"></button>
+    </ng-template>
+</p-confirmDialog>-->

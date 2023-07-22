@@ -48,6 +48,14 @@ export class DemandeComponent implements OnInit {
         this.isAdd = !this.isAdd
     }
 
+    demandeCongetype = [
+        {nom : 'Congé administratif' },
+        {nom : 'Congé de maladie' },
+        {nom : 'Congé sans solde' },
+        {nom : 'Congé de maternité' },
+    ]
+
+
     initmission() {
         this.demandemissionFrom = this.fb.group({
             id: [null],
@@ -302,16 +310,19 @@ findAllEmploye(){
 
         if (this.demande == "Demande congé") {
             const selectedemploye = this.employes.find(employe => employe.id === demande.employee.id);
+            const  typedemande = this.demandeCongetype.find(type => type.nom === demande.libelle)
+            console.log(typedemande.nom)
+            console.log(demande.libelle);
             this.demandeCongeFrom.patchValue({
                 id: demande.id,
                 employee: selectedemploye,
                 dateFin: new Date(demande.dateFin),
                 dateDebut: new Date(demande.dateDebut),
                 code: demande.code,
-                libelle: demande.libelle,
                 etat: demande.etat,
                 jourCouvrable: demande.jourCouvrable
             })
+            this.demandeficheFrom.controls['libelle'].setValue(typedemande);
         }
         if (this.demande == "Demande de fiche de paie") {
             const selectedemploye = this.employes.find(employe => employe.id === demande.employe.id);

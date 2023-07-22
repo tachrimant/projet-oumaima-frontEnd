@@ -15,6 +15,11 @@
                 style="    box-shadow: unset;margin-right:10px"  (click)="selectbtnFP()">
 
         </button>
+        <button pButton pRipple [label]="'Demande Travail'" class="p-button-primary"
+                [ngClass]="btnFP.isActive?'new-btn':'new-btn-no'"
+                style="    box-shadow: unset;margin-right:10px"  (click)="selectbtnFP()">
+
+        </button>
     </div>
 </div>
 
@@ -58,13 +63,11 @@
                     type="text"
                     pInputText
                     class="dsdsdsdsd"/>
-                <input
-                    [disabled]="true"
-                    placeholder="Type"
-                    formControlName="libelle"
-                    type="text"
-                    pInputText
-                    class="dsdsdsdsd"/>
+                <nb-select [disabled]="true" [style]="{'margin-right':'10px'}" placeholder="type de congé" formControlName="libelle" >
+                    <nb-option *ngFor="let type of demandeCongetype" [value]="type.nom">{{type.nom}}</nb-option>
+
+                </nb-select>
+
                 <input
                     [disabled]="true"
                     placeholder="Jour couvrable"

@@ -23,6 +23,7 @@ import { DemandeEmployeComponent } from './demande-employe/demande-employe.compo
 import { FormationEmployeComponent } from './formation-employe/formation-employe.component';
 import { TacheEmployeComponent } from './tache-employe/tache-employe.component';
 import {DialogModule} from "primeng/dialog";
+import {OrganisationComponent} from "./organisation/organisation.component";
 
 @NgModule({
     imports: [NbButtonModule,
@@ -46,7 +47,8 @@ import {DialogModule} from "primeng/dialog";
      HomeEmployeComponent,
      DemandeEmployeComponent,
      FormationEmployeComponent,
-     TacheEmployeComponent
+     TacheEmployeComponent,
+        OrganisationComponent
   ],
     exports:[CustomHeaderComponent],
 

@@ -18,6 +18,15 @@ export class DemandeEmployeComponent implements OnInit {
     isUpdate: boolean = false
     employes=[]
     saveelemnt = true;
+
+    demandeCongetype = [
+        {nom : 'Congé administratif' },
+        {nom : 'Congé de maladie' },
+        {nom : 'Congé sans solde' },
+        {nom : 'Congé de maternité' },
+    ]
+
+
     initConge() {
     this.service.get('/employe/'+localStorage.getItem('user')).subscribe((res)=>{
         this.demandeCongeFrom = this.fb.group({

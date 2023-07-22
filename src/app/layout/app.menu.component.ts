@@ -23,6 +23,13 @@ export class AppMenuComponent implements OnInit {
                     visible: false
                 } ,
                 {
+                    label: 'Organisation',
+                    icon: 'pi pi-fw pi-building',
+                    routerLink: ['/organisation'],
+                    roles: ['ROLE_ADMIN'],
+                    visible: false
+                } ,
+                {
                     label: 'Employée',
                     icon: 'pi pi-fw pi-users',
                     routerLink: ['/employee'],

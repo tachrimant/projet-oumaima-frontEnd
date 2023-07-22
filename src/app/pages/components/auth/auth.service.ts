@@ -33,7 +33,6 @@ export class AuthService {
             )
             .subscribe(
                 response => {
-                    debugger
                      this.access_token = response['access_token'];
                     // this.refresh_token = response['refresh_token'];
                     const expires_in = response['expires_in'];
@@ -58,7 +57,6 @@ export class AuthService {
                     this.appInitService.getconfig(user).subscribe((res:any) => {
 
                         if(res){
-                            debugger
                             let roles = [];
                             res.authorities.map(role => {
                                 roles.push(role.authority);
