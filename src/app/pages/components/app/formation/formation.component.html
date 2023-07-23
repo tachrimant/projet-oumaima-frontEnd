@@ -28,6 +28,7 @@
                 <th>Description</th>
                 <th>Date debut</th>
                 <th>Date fin</th>
+                <th>Etat</th>
 
 
                 <th>Action</th>
@@ -41,6 +42,7 @@
                 <td>{{ formation.description }}</td>
                 <td>{{ formation.dateDebut | date:'shortDate'}}</td>
                 <td>{{ formation.dateFin | date:'shortDate' }}</td>
+                <td>{{ formation.etatformation }}</td>
                  <td>
                       <nb-icon (click)="addElement(formation)" icon="refresh-outline" style="color:#0aff00"></nb-icon>
                 </td>
@@ -62,7 +64,7 @@
 </p-confirmDialog>
 
 
- <p-dialog header="Ajouter formation" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+ <p-dialog [contentStyle]="{'overflow':'visible'}" header="Ajouter formation" [(visible)]="visible" showEffect="fade" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="true">
      <form [formGroup]="formationFrom">
 
 
@@ -118,7 +120,14 @@
                     class="frt"
                     style="width: 100%;">
         </div>
-        <div class="col-6"></div>
+        <div class="col-6">
+            <label>Etat Formation</label>
+
+            <select appendTo="body" class="frt" [style]="{width:'100%', height:'70%'}"   formControlName="etatformation" >
+                <option *ngFor="let type of etatFormation" [value]="type.nom">{{type.nom}}</option>
+
+            </select>
+        </div>
     </div>
      <div class="row" style="width: 100%;">
          <div class="col-12" style="    display: flex;

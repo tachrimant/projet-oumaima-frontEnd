@@ -22,6 +22,12 @@ export class FormationComponent implements OnInit {
     employes = [];
     projets = [];
     taches = [];
+    etatFormation = [
+        {nom:'à venir'},
+        {nom:'commencé'},
+        {nom:'annulé'},
+        {nom:'Terminé'},
+    ];
     libelle: string;
     visible: boolean=false;
 
@@ -66,7 +72,8 @@ export class FormationComponent implements OnInit {
                 dateFin : [null, Validators.required],
                 code : [null, Validators.required],
                 description : [null, Validators.required],
-                title : [null, Validators.required]
+                title : [null, Validators.required],
+                etatformation : [null, Validators.required]
             }
         )
     }
@@ -144,7 +151,8 @@ export class FormationComponent implements OnInit {
         this.isAdd=true
         this.isUpdate=true
         this.saveelement = false;
-        this.visible=!this.visible
+        this.visible=!this.visible;
+        const etatformation = this.etatFormation.find(etat => etat.nom === formation.etatformation);
         this.formationFrom.patchValue({
             id : formation.id,
             // dateDebut : new Date(formation.dateDebut),
@@ -155,6 +163,7 @@ export class FormationComponent implements OnInit {
         })
         this.formationFrom.get('dateDebut').setValue(new Date(formation.dateDebut).toISOString().substr(0, 10));
         this.formationFrom.get('dateFin').setValue(new Date(formation.dateFin).toISOString().substr(0, 10));
+        this.formationFrom.get('etatformation').setValue(etatformation.nom);
 
     }
 

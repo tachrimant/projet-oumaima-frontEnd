@@ -25,6 +25,7 @@ import {RegisterComponent} from "./pages/components/auth/register/register.compo
 import {InputTextModule} from "primeng/inputtext";
 import {RippleModule} from "primeng/ripple";
 import {ButtonModule} from "primeng/button";
+import {Dropdown, DropdownModule} from "primeng/dropdown";
 
 
 export function initializeApp(appInitService: AppInitService) {
@@ -51,7 +52,7 @@ export function initializeApp(appInitService: AppInitService) {
         InputTextModule,
         RippleModule,
         ButtonModule,
-        NbCardModule
+        NbCardModule,
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

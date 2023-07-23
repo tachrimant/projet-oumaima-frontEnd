@@ -37,8 +37,7 @@
                 <th>Description</th>
                 <th>Date debut</th>
                 <th>Date fin</th>
-
-
+                <th>Etat</th>
 
                 <th>Action</th>
 
@@ -50,12 +49,14 @@
          <td>{{formation.code}}</td>
          <td>{{formation.title}}</td>
          <td>{{formation.description}}</td>
-                <td>{{ formation.dateDebut | date:'shortDate'}}</td>
-                <td>{{ formation.dateFin | date:'shortDate'}}</td>
+          <td>{{ formation.dateDebut | date:'shortDate'}}</td>
+         <td>{{ formation.dateFin | date:'shortDate'}}</td>
+         <td>{{ formation.etatformation}}</td>
 
                 <td>
-
-                    <nb-icon (click)="openInscription(formation)" icon="plus-circle-outline" style="color:#008179"></nb-icon>
+                    <div  *ngIf="formation.etatformation !== 'annulé' && formation.etatformation !== 'Terminé' ">
+                        <nb-icon (click)="openInscription(formation)" icon="plus-circle-outline" style="color:#008179"></nb-icon>
+                    </div>
                 </td>
             </tr>
         </ng-template>
@@ -70,6 +71,7 @@
                 <th>Description</th>
                 <th>Date debut</th>
                 <th>Date fin</th>
+                <th>Etat</th>
 
 
 
@@ -82,7 +84,7 @@
                 <td>{{formation.formation.description}}</td>
                 <td>{{ formation.formation.dateDebut | date:'shortDate'}}</td>
                 <td>{{ formation.formation.dateFin | date:'shortDate'}}</td>
-
+                <td>{{ formation.formation.etatformation}}</td>
 
 
             </tr>
