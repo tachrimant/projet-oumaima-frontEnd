@@ -322,16 +322,17 @@ export class DemandeEmployeComponent implements OnInit {
 
         if (this.demande == "Demande congé") {
             const selectedemploye = this.employes.find(employe => employe.id === demande.employee.id);
+            const typedemande = this.demandeCongetype.find(type => type.nom === demande.libelle);
             this.demandeCongeFrom.patchValue({
                 id: demande.id,
                 employee: selectedemploye,
                 dateFin: new Date(demande.dateFin),
                 dateDebut: new Date(demande.dateDebut),
                 code: demande.code,
-                libelle: demande.libelle,
                 etat: demande.etat,
                 jourCouvrable: demande.jourCouvrable
             })
+            this.demandeCongeFrom.controls['libelle'].setValue(typedemande.nom);
         }
         if (this.demande == "Demande de fiche de paie") {
             const selectedemploye = this.employes.find(employe => employe.id === demande.employe.id);

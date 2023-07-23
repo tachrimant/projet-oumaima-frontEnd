@@ -162,6 +162,7 @@ export class DemandeComponent implements OnInit {
 
     demande:string='Demande congé';
     libelleLike: string = "";
+    isCodeInputDisabled = true;
 
     selectbtnC(){
         this.btnC.isActive=true;
@@ -322,7 +323,8 @@ findAllEmploye(){
                 etat: demande.etat,
                 jourCouvrable: demande.jourCouvrable
             })
-            this.demandeficheFrom.controls['libelle'].setValue(typedemande);
+            this.demandeCongeFrom.controls['libelle'].setValue(typedemande.nom);
+            console.log(this.demandeCongeFrom.controls['libelle'].value)
         }
         if (this.demande == "Demande de fiche de paie") {
             const selectedemploye = this.employes.find(employe => employe.id === demande.employe.id);

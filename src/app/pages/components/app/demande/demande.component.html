@@ -16,8 +16,8 @@
 
         </button>
         <button pButton pRipple [label]="'Demande Travail'" class="p-button-primary"
-                [ngClass]="btnFP.isActive?'new-btn':'new-btn-no'"
-                style="    box-shadow: unset;margin-right:10px"  (click)="selectbtnFP()">
+                [ngClass]="'new-btn-no'"
+                style="    box-shadow: unset;margin-right:10px"  >
 
         </button>
     </div>
@@ -50,7 +50,7 @@
     align-items: center;">
 
                 <input
-                    [disabled]="true"
+                    [attr.disabled]="isUpdate ? '' : null"
                     placeholder="Code"
                     formControlName="code"
                     type="text"
@@ -67,14 +67,14 @@
                     <nb-option *ngFor="let type of demandeCongetype" [value]="type.nom">{{type.nom}}</nb-option>
 
                 </nb-select>
-
                 <input
-                    [disabled]="true"
+                    [attr.disabled]="isUpdate ? '' : null"
                     placeholder="Jour couvrable"
                     formControlName="jourCouvrable"
                     type="number"
                     pInputText
-                    class="dzzdzdzdzdzrg"/>
+                    class="dzzdzdzdzdzrg"
+                />
                 <div
                     style="    margin-right: 30px;">
                     <p-calendar
