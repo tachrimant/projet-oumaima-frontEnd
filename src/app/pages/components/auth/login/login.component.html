@@ -70,6 +70,9 @@
                                    formControlName="password"
                              />
                         </div>
+                        <div *ngIf="isIncorrectLogin" class="error-message">
+                             Username ou mot de passe incorrect.
+                        </div>
                          <div class="button input-box">
 
                               <button nbButton fullWidth status="primary" (click)="login()" [disabled]="signForm.invalid">Login</button>

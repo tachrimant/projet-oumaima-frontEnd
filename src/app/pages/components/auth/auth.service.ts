@@ -76,6 +76,7 @@ export class AuthService {
                     });
                 },
                 error => {
+
                     this.authStatusListener.next(false);
                 }
             );

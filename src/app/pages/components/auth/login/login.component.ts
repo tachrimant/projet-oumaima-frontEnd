@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit{
     valCheck: string[] = ['remember'];
 
     password!: string;
+    isIncorrectLogin: boolean = false;
 
     constructor(
         public layoutService: LayoutService,
@@ -35,6 +36,10 @@ export class LoginComponent implements OnInit{
         this.authService.login(
             this.signForm.value
         );
+
+        if (localStorage.getItem("access-token") == null){
+            this.isIncorrectLogin = true;
+        }
     }
 
     save() {
